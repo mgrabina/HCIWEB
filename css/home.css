@@ -1,1 +1,9 @@
 //Css Home
+header{
+	background-color: #A9F5F2;
+	opacity: 0.5;
+
+}
+header h3{
+	float: left;
+}
