@@ -1,9 +1,16 @@
 //Css Home
 header{
+	height: 10%;
+	width: 100%;
 	background-color: #A9F5F2;
 	opacity: 0.5;
-
+	align-content: center;
 }
-header h3{
+header h3, header h1{
 	float: left;
+}
+form{
+	width: 80%;
+	height: 30%;
+	align-content: center;
 }
