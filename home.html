@@ -3,8 +3,9 @@
 		<title>Best Flight</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway" rel="stylesheet">
 	</head>
-	<body background="img/background.jpeg">
+	<body >
 		<header>
 			<h1>Best Flight</h1>
 			<h3 href="home.html" >Home</h3>
@@ -12,17 +13,18 @@
 			<h3 href="deals.html">Deals</h3>
 			<h3 href="contactus.html">Contact Us</h3>
 		</header>
-		<form>
-			From <input type="text" name="from" class="form-control">
-			To <input type="text" name="to" class="form-control">
-			Dates <input type="date" name="dateFrom" class="form-control">
-			<input type="date" name="dateTo" class="form-control">
-			Round Trip <input type="checkbox" name="roundTrip" class="form-control">
-			Adults <input type="number" name="adults" class="form-control">
-			Childs <input type="number" name="childs" class="form-control">
-			Infants <input type="number" name="infants" class="form-control">
-		</form>
-		
+		<div id="formulario">
+			<form>
+				<label>From</label> <input type="text" name="from" class="form-control">
+				<label>To</label> <input type="text" name="to" class="form-control">
+				<label>Dates</label> <input type="date" name="dateFrom" class="form-control">
+				<input type="date" name="dateTo" class="form-control">
+				<label>Round Trip</label> <input type="checkbox" name="roundTrip" class="form-control">
+				<label>Adults</label> <input type="number" name="adults" class="form-control little">
+				<label>Childs</label> <input type="number" name="childs" class="form-control little" >
+				<label>Infants</label> <input type="number" name="infants" class="form-control little">
+			</form>
+		</div>
 		<div class="featured">
 			<img src="">
 		</div>
