@@ -1,9 +1,9 @@
 //Css Home
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Raleway');
 body{
-	background: "img/background.jpeg";
-	width: 100%;
-	height: 100%; 
+	background: url(back2);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 header{
 	height: 10%;
@@ -30,12 +30,15 @@ font-family: 'Indie Flower', cursive;
 	margin-bottom: 5%;
 	margin-left: 20%;
 	margin-right: 20%;
-    background-color: #7FFF ;
+    background-color: #99F9F3 ;
+    border: double ##FFFFFF; 
+    border-radius: 10px;
     opacity: 0.5;
 	width: 60%;
 	height: 30%;
 }
 form{
+	margin:5px;
 	opacity: 1;
 	align-content: center;
 	font-family: "Raleway"
