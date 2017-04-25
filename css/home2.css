@@ -1,0 +1,28 @@
+#flightFormT{
+				background-color: #bfe5f2;
+				border-radius: 15px 15px 0px 0px;
+				padding-bottom: 1em;
+				padding-top: 2em;
+				margin-top: 3em;
+			}
+
+			#flightFormB{
+				background-color: #bfe5f2;
+				
+				border-radius: 0px 0px 15px 15px;
+				padding-bottom: 3em;
+				padding-top: 1em;
+			}
+
+			
+			#roundTrip {
+				width: 15px; 
+				height: 15px;
+			}
+			
+			
+			.btn {
+   				background: #8b8a88;
+    			color: #ffffff;
+			}
+	
