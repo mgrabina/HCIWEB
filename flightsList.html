@@ -1,0 +1,208 @@
+<html>
+	<head>
+		<title>Best Flight</title>
+		<link rel="stylesheet" type="text/css" href="jqui/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/flightList.css">
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		
+		<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+		<script type="text/javascript" src="jqui/jquery-ui.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/flightsList.js"></script> 
+
+	</head>
+	<body >
+		
+
+    	<!-- HEADER -->
+		<div class="row" id="header">
+			<div class="col-md-2">
+				<h1>Best Flight</h1>	
+			</div>
+			<div class="col-md-2">
+				<h3><a href="home2.html" id="button">Home</a></h3>
+			</div>
+			<div class="col-md-2">
+				<h3><a href="home.html" id="button">Featured</a></h3>
+			</div>
+			<div class="col-md-2">
+				<h3><a href="home.html" id="button">Deals</a></h3>
+			</div>
+			<div class="col-md-2">
+				<h3><a href="home.html" id="button">Contact us</a></h3>
+			</div>
+			<div class="col-md-2">				
+			</div>
+		</div>
+
+
+		<h3> </h3>
+
+			
+		<!--FORM -->
+		<form class="form-inline" >
+			<div class="row" id="flightForm">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8" id="flightFormT">							
+					<label>From</label> <input type="text" name="from" class="form-control">
+					<label>To</label> <input type="text" name="to" class="form-control">
+					<label for="date2">Dates</label> 
+					<input type="date" name="dateFrom" id="date1" class="form-control">
+					<input type="date" name="dateTo" id="date2" class="form-control">
+					<button type="submit" class="btn btn-grey" id="searchButton">Search</button>
+				</div>
+				<div class="col-md-2">
+				</div>	
+			</div>
+		</form>
+
+		<div class="row">
+			<div class="col-md-1">					
+			</div>
+			<div class="col-md-10">				
+				<!-- BREADCRUMB -->
+				<ol class="breadcrumb" id="breadcrumb">
+	  			<li class="breadcrumb-item active">Choose a flight</li>
+				</ol>
+							
+				<!-- FILTERS -->
+				<div class="col-md-3" id="filters">
+					<!--FILTERS AIRLINES-->
+					<div class="airlinesFilter" >
+						<h3>Airlines:</h3>
+						<label class="checkbox">
+ 							<input type="checkbox"  value=""> Aerolineas Argentinas
+ 						</label>
+						<label class="checkbox">
+ 							<input type="checkbox"  value=""> American Airlines
+ 						</label>
+						<label class="checkbox">
+ 							<input type="checkbox"  value=""> Latam
+ 						</label>
+						<label class="checkbox">
+ 							<input type="checkbox"  value=""> Avianca
+						</label>
+					</div>
+					<!-- FILTERS CONECTIONS -->
+
+
+					<div class="DurationFilter" >
+						<h3>Duration:</h3>
+						<div id="slider"></div>
+
+						<h4>slider</h4>
+						<h4>slider</h4>
+					</div>
+
+
+
+
+
+				</div>
+
+				<!-- TICKETS -->
+				<div class="col-md-9" >
+					<div id="tickets">
+						<div id="ticket">
+							<div class="row row-ticket" id="rowTicketTop">
+								<div class="col-md-2">
+									<h4><span class="label label-info">departure</span></h4>
+								</div>	
+								<div class="col-md-2">
+									<h4>FROM: BUE</h4>
+								</div>
+								<div class="col-md-2">
+									<h4>TO: MIA</h4>
+								</div>	
+								<div class="col-md-2">
+									<h4>Duration:</h4>
+								</div>	
+								<div class="col-md-2">
+									<h4>flight number:</h4>
+								</div>
+								<div class="col-md-2 dark" id="rightBorderTop">
+									<h4>8.520 ARS</h4>
+								</div>
+							</div>
+							<div class="row row-ticket">
+								<div class="col-md-2">
+									<h4>24/04/17</h4>
+								</div>	
+								<div class="col-md-2">
+									<h6>Aeropuerto internacional de Ezeiza</h6>
+								</div>
+								<div class="col-md-2">
+									<h6>Aeropuerto internacional de Miami</h6>
+								</div>	
+								<div class="col-md-2">
+									<h4>10:00hs</h4>
+								</div>
+								<div class="col-md-2">
+									<h4>4430</h4>
+								</div>
+								<div class="col-md-2 dark">
+									<h7>1 adult, 2 child</h7>
+								</div>
+							</div>
+							<div class="row row-ticket" id="details">
+								<div class="col-md-2">
+									<h4>info</h4>
+								</div>	
+								<div class="col-md-2">
+									<h4>info</h4>
+								</div>
+								<div class="col-md-2">
+									<h4>info</h4>
+								</div>	
+								<div class="col-md-2">
+									<h4></h4>
+								</div>
+								<div class="col-md-2">
+									<h4></h4>
+								</div>
+								<div class="col-md-2 dark">
+									<h7></h7>
+								</div>
+							</div>
+							<div class="row row-ticket" id="rowTicketBottom">
+								<div class="col-md-2" id="leftBorderBotton">
+									<h4>american ailines</h4>
+								</div>	
+								<div class="col-md-2">		
+									<h4>17:30hs</h4>
+								</div>
+								<div class="col-md-2">
+									<h4>6:20hs</h4>
+								</div>	
+								<div class="col-md-2">
+									<h4>scales<button type="button" class="btn btn-link" id="detailsButton">Details</button></h4>
+								</div>	
+								<div class="col-md-2">
+									<h5>stars</h5>
+								</div>
+								<div class="col-md-2 dark" id="rightBorderBottom">
+									<button type="button" class="btn btn-grey">continue</button>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+			<!-- ORDER BY -->
+			<div class="col-md-1" id="orderBy">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Order by<span class="caret"></span>
+					</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">Price</a></li>
+							<li><a href="#">Duration</a></li>
+							<li><a href="#">Airline</a></li>
+						</ul>
+				</div>
+			</div>
+
+	</body>
+</html>
