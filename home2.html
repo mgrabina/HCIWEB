@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<title>Best Flight</title>
+
+		<link rel="stylesheet" type="text/css" href="jqui/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/home2.css">
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		
+		<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+		<script type="text/javascript" src="jqui/jquery-ui.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/home2.js"></script> 
+
+	</head>
+	<body >
+
+      		<!-- HEADER -->
+			<div class="row" id="header">
+				<div class="col-md-2">
+							<h1>Best Flight</h1>	
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home2.html" id="button" class="link">Home</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home.html" id="button" class="link">Featured</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home.html" id="button" class="link">Deals</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home.html" id="button" class="link">Contact us</a></h3>
+				</div>
+				<div class="col-md-2">			
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2">			
+				</div>
+
+				<div class="col-md-8" >	
+					<!--FORM -->
+					<form class="form" >
+						<div class="row" id="flightFormT">
+							<div class="col-md-1">			
+							</div>
+							<div class="col-md-4">			
+							<label>From</label> <input type="text" name="from" id="from" class="form-control">
+							</div>
+							<div class="col-md-4">			
+							<label>To</label> <input type="text" name="to" id="to" class="form-control">
+							</div>
+							
+							<div class="col-md-2">	
+								<label for="roundTrip">Round Trip</label> <input type="checkbox"  id="roundTrip" class="form-control">	
+							</div>
+							<div class="col-md-1">		
+							</div>
+						</div>	
+
+
+						<div class="row" id="flightFormB">
+							<div class="col-md-1">			
+							</div>
+							<div class="col-md-4">	
+								<div class="col-md-6">			
+									<label for="dateFrom">Departure</label> 
+									<input type="text" name="dateFrom" id="dateFrom" class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label for="dateTo">Arrival</label>	
+									<input type="text" name="dateTo" id="dateTo" class="form-control">
+								</div>
+							</div>
+							<div class="col-md-4">	
+								<div class="col-md-4">			
+									<label>Adults</label> <input type="number" name="adults" id="adults" class="form-control little" min="0">
+								</div>
+								<div class="col-md-4">	
+									<label>Childs</label> <input type="number" name="childs" id="childs" class="form-control little" min="0">
+								</div>
+								<div class="col-md-4">		
+									<label>Infants</label> <input type="number" name="infants" id="infants" class="form-control little" min="0">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<button type="submit" class="btn btn-lg" id="searchButton">Search</button>
+							</div>
+							<div class="col-md-1">
+							</div>		
+							
+							
+						</div>			
+
+
+
+
+
+
+					</form>	
+				</div>
+
+
+				<div class="col-md-2">		
+				</div>	
+			</div>
+
+			
+
+		
+	</body>
+</html>
