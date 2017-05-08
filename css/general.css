@@ -1,0 +1,26 @@
+#header{
+					background-color: #aad5e6;
+					font-family: "Forte";
+					color: #ffffff;
+					padding-left: 2em;
+
+			}
+body {
+        		
+        		background: url(../img/background.jpeg);
+        		background-size: 100% 100%;
+    			background-repeat: no-repeat;
+			}
+
+.pbChooseFlight{
+	background-color: #86A3DE
+}
+.pbPaymentMethod{
+	background-color: #A1B5DE
+}
+.pbConfirmation{
+	background-color: #B4C7EE
+}
+.link{
+	color: #000000;
+}

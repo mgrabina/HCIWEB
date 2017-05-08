@@ -1,0 +1,61 @@
+			
+			#leftBorderTop{
+				border-radius: 15px 0 0 0px;	
+			}
+			#rightBorderTop{
+				border-radius: 0 15px 0 0;	
+			}		
+			#leftBorderBottom{
+				border-radius: 0 0 0 15px;
+			}
+			#rightBorderBottom{
+				border-radius: 0 0 15px 0;
+			}
+			#rowTicketTop{
+				border-radius: 15px 15px 0 0;
+			}
+			#rowTicketBottom{
+				border-radius: 0 0 15px 15px;
+			}
+			#filters{
+				background-color: #bfe5f2;
+				padding-left: 3em;
+				border-radius: 15px 15px 15px 15px;
+			}
+			#orderBy{
+				padding-bottom: 1em;
+			}
+			#header{
+					background-color: #aad5e6;
+			}
+			#breadcrumb{
+					background-color: #bfe5f2;
+			}
+			#flightForm{
+				background-color: #bfe5f2;
+				padding-bottom: 1em;
+				padding-top: 1em;
+			}
+			#button{
+				color: black;
+			}
+			#ticket{
+				padding-bottom: 10em;
+				padding-left: 1em;
+			}
+			.row-ticket{
+				color: black;
+				background-color: #e5f8ff;
+				display: flex;
+			  display: -webkit-flex;
+			}
+			.dark{
+				background-color: #bfe5f2;
+			}  
+			.btn-grey {
+   				background: #8b8a88;
+    			color: #ffffff;
+			}
+			#dateFrom, #dateTo, #from, #to{
+				width: 10em;
+			}
