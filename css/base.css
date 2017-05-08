@@ -1,15 +1,19 @@
 //Css Base de todos los HTML
 body{
-	background: url(back2.jpg);
+    background-repeat: no-repeat;
+    color: #655959;
+    background: url(../img/background.jpeg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 header{
 	height: 10%;
 	width: 100%;
-	background-color: #A9F5F2;
 	opacity: 0.5;
 	align-content: center;
+	background-color: #aad5e6;
+	font-family: "Forte";
+	padding-left: 2em;
 
 }
 header h3, header h1{
