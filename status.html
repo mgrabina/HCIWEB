@@ -2,8 +2,9 @@
 	<head>
 		<title>Best Flight</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/status.css">
+		
 		<link rel="stylesheet" type="text/css" href="css/general.css">
+		<link rel="stylesheet" type="text/css" href="css/status.css">
 		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -36,11 +37,13 @@
 				<section id="status">
 					<h1>Flight Status</h1>
 					<form>
-						<input type="text" class="form-control" placeholder="Flight Number" required>
-						<select >
+
+						<div class="col-md-5"><input type="text" class="form-control" placeholder="Flight Number" id="flightNumber" required></div>
+						<div class="col-md-5 "><select class="form-control" >
 						  <!-- Se agregan las aerolineas por JS de la api -->
-						</select>
-						<button type="submit" class="btn btn-default">Check</button>
+						</select></div>
+						<div class="col-md-2"><button type="submit" class="btn btn-default" onclick="buscarEstado()">Check</button></div>
+						<br>
 					</form>
 					
 				</section>
