@@ -25,4 +25,14 @@
    				background: #8b8a88;
     			color: #ffffff;
 			}
-	
+#destacados{
+
+}
+#destacado{
+	border-radius: 15px;
+	max-height: 10em;	
+}
+.carousel-caption{
+	font-family: "Forte";
+	font-size: 3em;	
+}
