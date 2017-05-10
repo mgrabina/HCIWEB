@@ -6,7 +6,6 @@ $(document).ready(function(){
   checkCities();
   datePicker();
 
- 
 
 
 $("#searchButton").click(validate);
@@ -43,10 +42,14 @@ function validate(){
       if(flag2==false || flag== false){
         alert("not a city");
       }
+  });    
 
-}).done(function(){
   var dateFrom = document.getElementById("dateFrom").value; // Format:  yyyy-mm-dd
   var dateTo = document.getElementById("dateTo").value;
+  var time= new Date();
+  if(time<dateFrom || time<dateTo || dateTo<dateFrom)
+    alert("invalid day");
+
   if(dateFrom==dateTo){
     alert("same date");
    }
@@ -58,7 +61,6 @@ function validate(){
 
   if(adults==0 && childs==0 && infants == 0)
     alert("no passengers");
-}); 
 
 
 	
