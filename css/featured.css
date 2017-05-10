@@ -1,9 +1,7 @@
-#featuredHeader{
-	max-width:100%;
-	max-height: 50px;
-	
-}
 .item.active{
 	width: 100%;
-	max-height: 30em;	
+	max-height: 15em;	
+}
+#featureBody h1{
+	font-family: ''
 }
