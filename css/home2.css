@@ -20,10 +20,15 @@
 				height: 15px;
 			}
 			
+			#fechas, #pasajeros{
+				padding: 0;
+			}
 			
 			.btn {
-   				background: #8b8a88;
-    			color: #ffffff;
+				opacity: .9;
+    			width: 6em;
+    			height:  3em;
+    			margin: 1em;
 			}
 #destacados{
 

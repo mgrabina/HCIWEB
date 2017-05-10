@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<title>Best Flight</title>
-
 		<link rel="stylesheet" type="text/css" href="jqui/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/home2.css">
@@ -11,7 +10,6 @@
 		<script type="text/javascript" src="jqui/jquery-ui.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/home2.js"></script> 
-
 	</head>
 	<body >
 
@@ -64,17 +62,17 @@
 						<div class="row" id="flightFormB">
 							<div class="col-md-1">			
 							</div>
-							<div class="col-md-4">	
+							<div class="col-md-4" id="fechas">	
 								<div class="col-md-6">			
 									<label for="dateFrom">Departure</label> 
 									<input type="text" name="dateFrom" id="dateFrom" class="form-control">
 								</div>
 								<div class="col-md-6">
 									<label for="dateTo">Arrival</label>	
-									<input type="text" name="dateTo" id="dateTo" class="form-control">
+									<input disabled type="text" name="dateTo" id="dateTo" class="form-control">
 								</div>
 							</div>
-							<div class="col-md-4">	
+							<div class="col-md-4" id="pasajeros">	
 								<div class="col-md-4">			
 									<label>Adults</label> <input type="number" name="adults" id="adults" class="form-control little" min="0" value="0">
 								</div>
@@ -141,15 +139,6 @@
 			    </div>
 			  </div>
 
-			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
 			</div>
 			</article>
 
@@ -184,15 +173,6 @@
 			    </div>
 			  </div>
 
-			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
 			</div>
 			</article>
 			<div class="col-md-2"></div>

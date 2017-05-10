@@ -10,7 +10,15 @@ $(document).ready(function(){
 
 $("#searchButton").click(validate);
 
-
+  document.getElementById("roundTrip").onchange = function(){
+    if(document.getElementById("roundTrip").checked){
+      document.getElementById("dateTo").removeAttr('disabled');
+    }else{
+       document.getElementById("dateTo").attr({
+                    'disabled': 'disabled'
+                });
+    }
+  };
 
 });
 
