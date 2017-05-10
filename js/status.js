@@ -6,15 +6,17 @@ $(document).ready(function(){
 	     long=aerolineas.length;
 	    for(var i=0; i<long;i++)
 	    	$("select").append("<option value='"+ data.airlines[i].id+"'>"+data.airlines[i].name+"</option>");	
-	});
-	
-	$("button").click(function(){
-		var id = document.getElementsByTagName('select').value;
-		var number = document.getElementById('flightNumber').value;
-		window.alert(id +" " + number); 
+	});		
+});
+
+	function buscarEstado(){
+		var id = "hola";
+		var number = "chau";
+		id = document.getElementsByTagName('select').value;
+		number = document.getElementById('flightNumber').value; 
+		window.alert(id + "" + number);
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/status.groovy?method=getflightstatus&airline_id="+id+"&flight_number="+number,function(data){
 			status = data.status;
 			window.alert(status);
 		});
-	}	);		
-});
+	}	
