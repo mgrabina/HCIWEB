@@ -10,13 +10,29 @@ $(document).ready(function(){
 });
 
 	function buscarEstado(){
-		var id = "hola";
-		var number = "chau";
-		id = document.getElementsByTagName('select').value;
+		var select=document.getElementsByTagName("select");
+		id = $("select").val();
 		number = document.getElementById('flightNumber').value; 
-		window.alert(id + "" + number);
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/status.groovy?method=getflightstatus&airline_id="+id+"&flight_number="+number,function(data){
-			status = data.status;
-			window.alert(status);
+			var text="";
+			switch(data.status.status){
+				case "S": text="Scheduled";
+					break;
+				case "A": text="Active";
+					break;
+				case "R": text="Deflected";
+					break;
+				case "L": text="Landed";
+					break;
+				case "C": text="Canceled";
+					break;	
+			}
+			if (data.status.status == "S" || data.status.status == "A") {
+				if(data.status.departure.gate_delay == null)
+					text= text+" - On Time - " + data.status.departure.scheduled_time;
+				else
+					text= text+" - Delayed - " + data.status.departure.gate_delay;
+			}
+			alert(text);
 		});
 	}	
