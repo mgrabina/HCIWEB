@@ -15,9 +15,9 @@ $(document).ready(function(){
 		 var deals = data.deals;
 		 var table= document.getElementsByTagName("table");		       	
 	     long=deals.length;
-	     $("table").append("<tr><td>City</td><td>Country</td><td>Price</td></tr>");
+	     $("table").append("<tr id='primeraFila'><td>City</td><td>Country</td><td>Price</td></tr>");
 	    for(var i=0; i<long;i++)
-	    	$("table").append("<tr><td>"+deals[i].city.name+"</td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");	
+	    	$("table").append("<tr id='fila'><td>"+deals[i].city.name+"</td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");	
 	});
 	});
 

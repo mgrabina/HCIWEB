@@ -12,6 +12,7 @@
 				border-radius: 0px 0px 15px 15px;
 				padding-bottom: 3em;
 				padding-top: 1em;
+				opacity: .9;
 			}
 
 			
@@ -38,6 +39,7 @@
 	max-height: 10em;	
 }
 .carousel-caption{
-	font-family: "Forte";
+	font-family: 'Raleway', sans-serif;
+
 	font-size: 3em;	
 }
