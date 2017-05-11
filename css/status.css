@@ -8,4 +8,10 @@
 	opacity: .8;
 	max-width: 50%;
 	height: auto;
+	font-family: 'Kalam', cursive;
+	
+}
+h1{
+	font-family: 'Pacifico', cursive;
+	margin: .5em;
 }

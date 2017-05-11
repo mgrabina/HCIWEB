@@ -7,9 +7,12 @@
 	border-radius: 15px 15px 15px 15px;
 	opacity: .8;
 	max-width: 50%;
-	
-	
+	font-family: 'Kalam', cursive;
+
 }
 #boton{
 	width: 100%;
+}
+label{
+	font-family: 'Pacifico', cursive;
 }

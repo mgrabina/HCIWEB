@@ -9,6 +9,7 @@ $(document).ready(function(){
 	    for(var i=0; i<long;i++)
 	    	$("select").append("<option value="+ data.cities[i].id+">"+data.cities[i].name+"</option>");	
 	});
+	
 	$("select").change(function(){
 		$("table").children().remove();
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from="+this[this.selectedIndex].value,function(data){
