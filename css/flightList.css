@@ -21,12 +21,10 @@
 				background-color: #bfe5f2;
 				padding-left: 3em;
 				border-radius: 15px 15px 15px 15px;
+				opacity: .85;
 			}
 			#orderBy{
 				padding-bottom: 1em;
-			}
-			#header{
-					background-color: #aad5e6;
 			}
 			#breadcrumb{
 					background-color: #bfe5f2;
@@ -35,13 +33,23 @@
 				background-color: #bfe5f2;
 				padding-bottom: 1em;
 				padding-top: 1em;
+				opacity: .8;
 			}
 			#button{
 				color: black;
 			}
 			#ticket{
-				padding-bottom: 10em;
+				padding-bottom: 1em;
 				padding-left: 1em;
+				opacity: .9;
+				
+			}
+			#ticket h4{
+				font-family: 'Pacifico', cursive;
+				text-decoration: bold;
+			}
+			#ticket h6{
+				font-family: 'Kalam';
 			}
 			.row-ticket{
 				color: black;
@@ -52,10 +60,6 @@
 			.dark{
 				background-color: #bfe5f2;
 			}  
-			.btn-grey {
-   				background: #8b8a88;
-    			color: #ffffff;
-			}
 			#dateFrom, #dateTo, #from, #to{
 				width: 10em;
 			}
