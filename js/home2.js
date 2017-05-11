@@ -28,8 +28,6 @@ else{
  document.getElementById("searchButton").href="flightsList.html"; 
 }
 
-$("#searchButton").click(validate);
-
   document.getElementById("roundTrip").onchange = function(){
     if(document.getElementById("roundTrip").checked){
       document.getElementById("dateTo").disabled=false;
@@ -43,19 +41,17 @@ $("#searchButton").click(validate);
 
 
 function validate(){
-
-
+  document.getElementById('errores').innerHTML = '';
 	//alert("is working fine");
 	var from = document.getElementById("from").value;
   var to = document.getElementById("to").value;
-  
   if(from=="" || to==""){
-    alert("complete all the fields");
+   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Complete los campos</div>';
     ret=false;
   }
   
   if(from==to)
-    alert("same city");
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Misma ciudad</div>';
   var ret=true;
   var long = availableCities.length;
   var flag= false;
@@ -67,7 +63,7 @@ function validate(){
       flag2=true;
   }
   if(flag2==false || flag== false){
-    alert("not a city");
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">No es una ciudad</div>';
     ret=false;
   }
 
@@ -75,12 +71,12 @@ function validate(){
   var dateTo = document.getElementById("dateTo").value;
   var time= new Date();
   if(time<dateFrom || time<dateTo || dateTo<dateFrom){
-    alert("invalid day");
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Dia invalido</div>';
     ret=false;
   }
 
   if(dateFrom==dateTo){
-    alert("same date");
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Misma fecha</div>';
     ret=false;
    }
 
@@ -90,7 +86,7 @@ function validate(){
   var infants = document.getElementById("infants").value;
 
   if(adults==0 && childs==0 && infants == 0){
-    alert("no passengers");  
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">No hay pasajeros</div>';
     ret=false;
   }
 return ret;
