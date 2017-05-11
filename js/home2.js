@@ -20,7 +20,6 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
 
 
 
-<<<<<<< HEAD
 var a=$("#searchButton").click(validate);
 if(a==false){
   document.getElementById("searchButton").href="#";
@@ -29,22 +28,18 @@ else{
  document.getElementById("searchButton").href="flightsList.html"; 
 }
 
-=======
 $("#searchButton").click(validate);
 
   document.getElementById("roundTrip").onchange = function(){
     if(document.getElementById("roundTrip").checked){
-      document.getElementById("dateTo").removeAttr('disabled');
+      document.getElementById("dateTo").disabled=false;
     }else{
-       document.getElementById("dateTo").attr({
-                    'disabled': 'disabled'
-                });
+      document.getElementById("dateTo").disabled=true;
     }
-  };
->>>>>>> origin/master
 
+
+};
 });
-
 
 
 function validate(){
