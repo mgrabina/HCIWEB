@@ -15,6 +15,10 @@ $(document).ready(function(){
 		number = document.getElementById('flightNumber').value; 
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/status.groovy?method=getflightstatus&airline_id="+id+"&flight_number="+number,function(data){
 			var text="";
+			try{
+			if(data.error.code<1000)
+				alert(data.error.message);
+			}catch(err){
 			switch(data.status.status){
 				case "S": text="Scheduled";
 					break;
@@ -34,5 +38,5 @@ $(document).ready(function(){
 					text= text+" - Delayed - " + data.status.departure.gate_delay;
 			}
 			alert(text);
-		});
+		}});
 	}	
