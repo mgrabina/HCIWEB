@@ -50,50 +50,49 @@ function validate(){
    errores= errores+'Complete los campos'+ "\n";
     ret=false;
   }
-  
-  if(from==to)
-    errores=errores +'Misma ciudad\n';
-  var ret=true;
-  var long = availableCities.length;
-  var flag= false;
-  var flag2=false;
-  for(var i=0;i<long && (flag==false || flag2==false) ;i++){
-    if(flag == false && from==availableCities[i])
-      flag=true;
-    if(flag2 == false && to==availableCities[i])
-      flag2=true;
-  }
-  if(flag2==false || flag== false){
-    errores=errores +'No es una ciudad \n';
-    ret=false;
-  }
+  if(ret!=false){
+    if(from==to)
+      errores=errores +'Misma ciudad\n';
+    var ret=true;
+    var long = availableCities.length;
+    var flag= false;
+    var flag2=false;
+    for(var i=0;i<long && (flag==false || flag2==false) ;i++){
+      if(flag == false && from==availableCities[i])
+        flag=true;
+      if(flag2 == false && to==availableCities[i])
+        flag2=true;
+    }
+    if(flag2==false || flag== false){
+      errores=errores +'No es una ciudad \n';
+      ret=false;
+    }
 
-  var dateFrom = document.getElementById("dateFrom").value; // Format:  yyyy-mm-dd
-  var dateTo = document.getElementById("dateTo").value;
-  var time= new Date();
-  if(time<dateFrom || time<dateTo || dateTo<dateFrom){
-    errores=errores +'Dia invalido \n';
-    ret=false;
-  }
+    var dateFrom = document.getElementById("dateFrom").value; // Format:  yyyy-mm-dd
+    var dateTo = document.getElementById("dateTo").value;
+    var time= new Date();
+    if(time<dateFrom || time<dateTo || dateTo<dateFrom){
+      errores=errores +'Dia invalido \n';
+      ret=false;
+    }
 
-  if(dateFrom==dateTo){
-    errores=errores +'Misma fecha \n';
-    ret=false;
-   }
+    if(dateFrom==dateTo){
+      errores=errores +'Misma fecha \n';
+      ret=false;
+     }
 
-  var roundTrip = $("#roundTrip").is(":checked");  // false or true
-  var adults = document.getElementById("adults").value;
-  var childs = document.getElementById("childs").value;
-  var infants = document.getElementById("infants").value;
+    var roundTrip = $("#roundTrip").is(":checked");  // false or true
+    var adults = document.getElementById("adults").value;
+    var childs = document.getElementById("childs").value;
+    var infants = document.getElementById("infants").value;
 
-  if(adults==0 && childs==0 && infants == 0){
-    errores=errores +'No hay pasajeros \n';
-    ret=false;
-  }
+    if(adults==0 && childs==0 && infants == 0){
+      errores=errores +'No hay pasajeros \n';
+      ret=false;
+    }
+   } 
   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
-return ret;
-  
-
+  return ret;
 }
 
 
