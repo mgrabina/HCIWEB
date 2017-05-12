@@ -10,6 +10,7 @@ $(document).ready(function(){
 });
 
 	function buscarEstado(){
+		document.getElementById('errores').innerHTML='';
 		var select=document.getElementsByTagName("select");
 		id = $("select").val();
 		number = document.getElementById('flightNumber').value; 
@@ -17,7 +18,7 @@ $(document).ready(function(){
 			var text="";
 			try{
 			if(data.error.code<1000)
-				alert(data.error.message);
+							  document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+data.error.message+'</div>';
 			}catch(err){
 			switch(data.status.status){
 				case "S": text="Scheduled";
@@ -37,6 +38,7 @@ $(document).ready(function(){
 				else
 					text= text+" - Delayed - " + data.status.departure.gate_delay;
 			}
-			alert(text);
+			  document.getElementById('errores').innerHTML+='<div class="alert alert-warning" role="alert">'+text+'</div>';
+
 		}});
 	}	
