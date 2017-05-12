@@ -111,9 +111,9 @@ function validate(){
 
 
    if(document.getElementById("roundTrip").checked){
-    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+""; 
+    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+childs+"&infants="+infants+""; 
     }else{
-      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''";     
+      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+childs+"&infants="+infants+"";     
     }
   }
 }

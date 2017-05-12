@@ -30,7 +30,7 @@ $(document).ready(function(){
 		    }
 		    var date= ""+month+"/"+day+"/"+year+"";
 		    for(var i=0; i<long;i++){
-		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo='>";     
+		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0'>";     
 		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		    }
 	}).done(function(){
@@ -62,7 +62,7 @@ $(document).ready(function(){
 		    }
 		    var date= ""+month+"/"+day+"/"+year+"";
 		    for(var i=0; i<long;i++){
-		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo='>";     
+		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0'>";     
 		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		    }	
 	}).done(function(){
