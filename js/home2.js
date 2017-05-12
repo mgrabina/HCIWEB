@@ -43,6 +43,7 @@ else{
 function validate(){
   document.getElementById('errores').innerHTML = '';
   var errores='';
+  var ret=true;
 	//alert("is working fine");
 	var from = document.getElementById("from").value;
   var to = document.getElementById("to").value;
@@ -53,7 +54,7 @@ function validate(){
   if(ret!=false){
     if(from==to)
       errores=errores +'Misma ciudad\n';
-    var ret=true;
+    
     var long = availableCities.length;
     var flag= false;
     var flag2=false;
@@ -68,13 +69,20 @@ function validate(){
       ret=false;
     }
 
-    var dateFrom = document.getElementById("dateFrom").value; // Format:  yyyy-mm-dd
-    var dateTo = document.getElementById("dateTo").value;
+    var dateFrom = Date.parse(document.getElementById("dateFrom").value); // Format:  yyyy-mm-dd
+    var dateTo = Date.parse(document.getElementById("dateTo").value);
     var time= new Date();
-    if(time<dateFrom || time<dateTo || dateTo<dateFrom){
-      errores=errores +'Dia invalido \n';
-      ret=false;
-    }
+    if(document.getElementById("roundTrip").checked){      
+      if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
+        errores=errores +'Dia invalido \n';
+        ret=false;
+      }
+    }else{
+        if(dateFrom<=time){
+          errores=errores +'Dia invalido \n';
+          ret=false;
+        }  
+      }
 
     if(dateFrom==dateTo){
       errores=errores +'Misma fecha \n';
