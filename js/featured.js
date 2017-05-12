@@ -16,8 +16,23 @@ $(document).ready(function(){
 			 var table= document.getElementsByTagName("table");		       	
 		     long=deals.length;
 		     $("table").append("<tr id='primeraFila'><td>City</td><td>Country</td><td>Price</td></tr>");
-		    for(var i=0; i<long;i++)
-		    	$("table").append("<tr id='fila'><td>"+deals[i].city.name+"</td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");	
+		    var time= new Date();
+		    var day=time.getUTCDate()+7;   
+		    var month=time.getMonth()+1;
+		    var year=time.getFullYear();
+		    if(day>30){
+		    	day=day-30;
+		    	month++;
+		    }
+		    if(month>12){
+		    	month=month-12;
+		    	year++;
+		    }
+		    var date= ""+month+"/"+day+"/"+year+"";
+		    for(var i=0; i<long;i++){
+		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo='>";     
+		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+		    }
 	}).done(function(){
 		$("select").removeAttr("disabled");  	
 	});		
@@ -31,11 +46,28 @@ $(document).ready(function(){
 		 var table= document.getElementsByTagName("table");		       	
 	     long=deals.length;
 	     $("table").append("<tr id='primeraFila'><td>City</td><td>Country</td><td>Price</td></tr>");
-	    for(var i=0; i<long;i++)
-	    	$("table").append("<tr id='fila'><td>"+deals[i].city.name+"</td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");	
+	     var time= new Date();
+		    var day=time.getUTCDate()+7;   
+		    var month=time.getMonth()+1;
+		    var year=time.getFullYear();
+		    if(day>30){
+		    	day=day-30;
+		    	month++;
+		    }
+		    if(month>12){
+		    	month=month-12;
+		    	year++;
+		    }
+		    var date= ""+month+"/"+day+"/"+year+"";
+		    for(var i=0; i<long;i++){
+		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo='>";     
+		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+		    }	
 	}).done(function(){
 		$("select").removeAttr("disabled");
 	});
 	});
 
 });
+
+
