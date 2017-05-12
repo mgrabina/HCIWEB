@@ -1,5 +1,6 @@
 
 var availableCities = [];
+var availableCitiesid=[];
 $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
   
@@ -11,6 +12,7 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
       var i = 0;
       for( i = 0; i<size; i++){
         availableCities.push(data.cities[i].name);
+        availableCitiesid.push(data.cities[i].id);
       }
 
 }); 
@@ -20,13 +22,7 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
 
 
 
-var a=$("#searchButton").click(validate);
-if(a==false){
-  document.getElementById("searchButton").href="#";
-}
-else{
- document.getElementById("searchButton").href="flightsList.html"; 
-}
+$("#searchButton").click(validate);
 
   document.getElementById("roundTrip").onchange = function(){
     if(document.getElementById("roundTrip").checked){
@@ -98,9 +94,28 @@ function validate(){
       errores=errores +'No hay pasajeros \n';
       ret=false;
     }
-   } 
-  document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
-  return ret;
+   }
+  if(ret==false){
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
+    document.getElementById("searchButton").href="#";
+  }
+  else{
+    var idfrom;
+    var idto;
+    for(var x=0; x< availableCities.length;x++){
+      if(availableCities[x]==from)
+        idfrom=availableCitiesid[x];
+      if(availableCities[x]==to)
+        idto=availableCitiesid[x];
+    }
+
+
+   if(document.getElementById("roundTrip").checked){
+    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+""; 
+    }else{
+      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''";     
+    }
+  }
 }
 
 
