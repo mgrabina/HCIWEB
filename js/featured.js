@@ -40,8 +40,10 @@ $(document).ready(function(){
 	
 	$("select").change(function(){
 		$("table").children().remove();
+		$("table").append("<tr><td>Loading</td></tr>");
 		this.disabled=true;
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from="+this[this.selectedIndex].value,function(data){
+		 $("table").children().remove();
 		 var deals = data.deals;
 		 var table= document.getElementsByTagName("table");		       	
 	     long=deals.length;
