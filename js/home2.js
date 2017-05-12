@@ -42,16 +42,17 @@ else{
 
 function validate(){
   document.getElementById('errores').innerHTML = '';
+  var errores='';
 	//alert("is working fine");
 	var from = document.getElementById("from").value;
   var to = document.getElementById("to").value;
   if(from=="" || to==""){
-   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Complete los campos</div>';
+   errores= errores+'Complete los campos'+ "\n";
     ret=false;
   }
   
   if(from==to)
-    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Misma ciudad</div>';
+    errores=errores +'Misma ciudad\n';
   var ret=true;
   var long = availableCities.length;
   var flag= false;
@@ -63,7 +64,7 @@ function validate(){
       flag2=true;
   }
   if(flag2==false || flag== false){
-    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">No es una ciudad</div>';
+    errores=errores +'No es una ciudad \n';
     ret=false;
   }
 
@@ -71,12 +72,12 @@ function validate(){
   var dateTo = document.getElementById("dateTo").value;
   var time= new Date();
   if(time<dateFrom || time<dateTo || dateTo<dateFrom){
-    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Dia invalido</div>';
+    errores=errores +'Dia invalido \n';
     ret=false;
   }
 
   if(dateFrom==dateTo){
-    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Misma fecha</div>';
+    errores=errores +'Misma fecha \n';
     ret=false;
    }
 
@@ -86,9 +87,10 @@ function validate(){
   var infants = document.getElementById("infants").value;
 
   if(adults==0 && childs==0 && infants == 0){
-    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">No hay pasajeros</div>';
+    errores=errores +'No hay pasajeros \n';
     ret=false;
   }
+  document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
 return ret;
   
 
