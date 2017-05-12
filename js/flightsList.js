@@ -131,7 +131,7 @@ function loadAirlines(){
  function loadTickets(){
 
   window.location.href = "#";
-
+$( "#loading" ).empty();
 $("#loading").append("<h4><span class=\"label label-info\" id=\"load\"><span class=\"glyphicon glyphicon-hourglass ld ld-spin\" aria-hidden=\"true\"></span> Loading...</span></h4>");  
 
 var from = "BUE";
