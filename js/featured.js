@@ -28,7 +28,13 @@ $(document).ready(function(){
 		    	month=month-12;
 		    	year++;
 		    }
-		    var date= ""+month+"/"+day+"/"+year+"";
+		    var ceroday="";
+		    var ceromonth="";
+		    if(day<10)
+		    	ceroday="0";
+		    if(month<10)
+		    	ceromonth="0";
+		    var date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
 		    for(var i=0; i<long;i++){
 		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0'>";     
 		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
