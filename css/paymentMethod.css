@@ -5,7 +5,26 @@
 				background-color: #bfe5f2;
 				opacity: .9;
 				margin-bottom: 2em;
-				padding-bottom: 23em;
+				height: 23em;
+			}
+			.passengerInfo{
+				border-radius: 15px 15px 15px 15px;
+				padding-top: 1em;
+				margin-top: 3em;
+				background-color: #bfe5f2;
+				opacity: .9;
+				margin-bottom: 2em;
+				height: auto;
+				padding: 1em;
+			}
+			thead{
+				color: white;
+			}
+			th{
+				font-family: 'Pacifico';
+			}
+			td{
+				font-family: 'Kalam';
 			}
 			
 			#breadcrumb{
@@ -23,7 +42,8 @@
 			}
 			.btn{
 				float: right;
-				margin-top: 2em;
+				width: 100%;
+				margin-bottom: 2em;
 			}
 			
 		
