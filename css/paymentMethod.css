@@ -1,10 +1,11 @@
 			.paymentMethod{
-				background-color: #aad5e6;
-				padding-left: 3em;
 				border-radius: 15px 15px 15px 15px;
-				padding-bottom: 28em;
-				padding-top: 3em;
+				padding-top: 1em;
 				margin-top: 3em;
+				background-color: #bfe5f2;
+				opacity: .9;
+				margin-bottom: 2em;
+				padding-bottom: 23em;
 			}
 			#header{
 					background-color: #aad5e6;
@@ -13,10 +14,18 @@
 
 					background-color: #aad5e6;
 			}
-			.btn {
-   				background: #8b8a88;
-    			color: #ffffff;
-    			margin-top: 2em;
+			
+			label{
+				font-family: 'Kalam', cursive;
+			}
+			h3{
+				font-family: 'Pacifico', cursive;
+				text-align: center;
+				text-decoration: bold;
+			}
+			.btn{
+				float: right;
+				margin-top: 2em;
 			}
 			
 		
