@@ -8,10 +8,6 @@ loadTickets();
 checkCities();
  datePicker();
 
-
- 
-
-
 $(document).on('click','#page', function(event) {
 
     pageInFocus = this.getAttribute("value");
@@ -19,16 +15,11 @@ $(document).on('click','#page', function(event) {
    
 }); 
 
-
-
 $(document).on('click','#order', function(event) {
 
    	loadPageInOrder(this.getAttribute("type"));
    
 }); 
-
-
-
 
 $(document).on('click','.checkbox', function(event) {
     sliderSetted = false;
@@ -38,6 +29,7 @@ $(document).on('click','.checkbox', function(event) {
    
 }); 
 
+$("#searchButton").click(validate);
 
 
 
@@ -57,9 +49,12 @@ $( ".slider" ).on( "slide", function( event, ui ) {
 $( ".slider" ).on( "slidechange", function( event, ui ) {
   pageInFocus = 1;
   loadTickets();
+
+
+
+
+
 } );
-
-
 
 
 
@@ -94,7 +89,7 @@ var to = getQueryVariable("to");
 
 var date2 = getQueryVariable("dateFrom"); // mm/dd/yyyy
 var date = date2.substring(6, 10) + "-" + date2.substring(0, 2) + "-" + date2.substring(3, 5);    // yyyy-mm-dd
-
+var round= getQueryVariable("round");
 var adults = getQueryVariable("adults");
 var children = getQueryVariable("child");
 var infants = getQueryVariable("infants");
@@ -482,12 +477,12 @@ function datePicker() {
 }
 
 
-
+var availableCities = [];
+var availableCitiesid=[];
 //check the cities for the form
 function checkCities(){
 
-  var availableCities = [];
-
+  
 
 $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=100",function(data){
 
@@ -495,6 +490,21 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
       var i = 0;
       for( i = 0; i<size; i++){
         availableCities.push(data.cities[i].name);
+        availableCitiesid.push(data.cities[i].id);
+      }
+      var from2;
+      var to2;
+      for(var x=0;x<availableCitiesid.length;x++){
+        if(availableCitiesid[x]==from)
+          from2=availableCities[x];
+        if(to==availableCitiesid[x])
+          to2=availableCities[x];
+      }
+      document.getElementById("from").value=from2;
+      document.getElementById("to").value=to2;
+      if(round=="false"){
+        alert("entro");
+        document.getElementById("dateTo").disabled=true;
       }
 
 }); 
@@ -581,4 +591,87 @@ function appendTicket(value){
     return true;
 
   return false;
+}
+function validate(){
+  document.getElementById('errores').innerHTML = '';
+  var errores='';
+  var ret=true;
+  //alert("is working fine");
+  var from = document.getElementById("from").value;
+  var to = document.getElementById("to").value;
+  var roundTrip = (round=="false")?false:true;
+  var dateFrom = Date.parse(document.getElementById("dateFrom").value); // Format:  yyyy-mm-dd
+  var dateTo = Date.parse(document.getElementById("dateTo").value);
+  var time= new Date();
+  if(from=="" || to==""|| isNaN(dateFrom)){
+   errores= errores+'Complete los campos'+ "\n";
+    ret=false;
+  }else
+  if(roundTrip==true && isNaN(dateTo)){
+    errores= errores+'Complete los campos'+ "\n";
+    ret=false;
+  }
+  if(ret!=false){
+    if(from==to)
+      errores=errores +'Misma ciudad\n';
+    
+    var long = availableCities.length;
+    var flag= false;
+    var flag2=false;
+    for(var i=0;i<long && (flag==false || flag2==false) ;i++){
+      if(flag == false && from==availableCities[i])
+        flag=true;
+      if(flag2 == false && to==availableCities[i])
+        flag2=true;
+    }
+    if(flag2==false || flag== false){
+      errores=errores +'No es una ciudad \n';
+      ret=false;
+    }
+    
+    if(roundTrip){      
+      if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
+        errores=errores +'Dia invalido \n';
+        ret=false;
+      }
+    }else{
+        if(dateFrom<=time){
+          errores=errores +'Dia invalido \n';
+          ret=false;
+        }  
+      }
+
+    if(dateFrom==dateTo){
+      errores=errores +'Misma fecha \n';
+      ret=false;
+     }
+
+      // false or true
+ 
+    if(adults==0 && children==0 && infants == 0){
+      errores=errores +'No hay pasajeros \n';
+      ret=false;
+    }
+   }
+  if(ret==false){
+    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
+    document.getElementById("searchButton").href="#";
+  }
+  else{
+    var idfrom;
+    var idto;
+    for(var x=0; x< availableCities.length;x++){
+      if(availableCities[x]==from)
+        idfrom=availableCitiesid[x];
+      if(availableCities[x]==to)
+        idto=availableCitiesid[x];
+    }
+
+
+   if(roundTrip){
+    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+children+"&infants="+infants+""; 
+    }else{
+      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+children+"&infants="+infants+"";     
+    }
+  }
 }

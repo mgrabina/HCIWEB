@@ -43,8 +43,16 @@ function validate(){
 	//alert("is working fine");
 	var from = document.getElementById("from").value;
   var to = document.getElementById("to").value;
-  if(from=="" || to==""){
+  var dateFrom = Date.parse(document.getElementById("dateFrom").value); // Format:  yyyy-mm-dd
+  var dateTo = Date.parse(document.getElementById("dateTo").value);
+  var time= new Date();
+  var roundTrip = $("#roundTrip").is(":checked");  // false or true
+  if(from=="" || to=="" || isNaN(dateFrom) ) {
    errores= errores+'Complete los campos'+ "\n";
+    ret=false;
+  }
+  if(roundTrip==true && isNaN(dateTo)){
+    errores= errores+'Complete los campos'+ "\n";
     ret=false;
   }
   if(ret!=false){
@@ -65,9 +73,7 @@ function validate(){
       ret=false;
     }
 
-    var dateFrom = Date.parse(document.getElementById("dateFrom").value); // Format:  yyyy-mm-dd
-    var dateTo = Date.parse(document.getElementById("dateTo").value);
-    var time= new Date();
+   
     if(document.getElementById("roundTrip").checked){      
       if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
         errores=errores +'Dia invalido \n';
@@ -85,7 +91,7 @@ function validate(){
       ret=false;
      }
 
-    var roundTrip = $("#roundTrip").is(":checked");  // false or true
+    
     var adults = document.getElementById("adults").value;
     var childs = document.getElementById("childs").value;
     var infants = document.getElementById("infants").value;
