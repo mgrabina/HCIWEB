@@ -1,19 +1,29 @@
 			.confirmation{
-				background-color: #aad5e6;
+				background-color: #bfe5f2;
 				padding-left: 3em;
 				border-radius: 15px 15px 15px 15px;
 				padding-bottom: 28em;
 				padding-top: 3em;
 				margin-top: 3em;
+				opacity: .9;
 			}
-			#header{
-					background-color: #aad5e6;
+			article{
+				background-color: #bfe5f2;
+				opacity: .9;
+				height: 10em;
+				border-radius: 15px 15px 15px 15px;
+				margin-bottom: 1em;
+				padding: 1em;
 			}
-			
-			.btn {
-   				background: #8b8a88;
-    			color: #ffffff;
-    			margin-top: 2em;
+			article h3{
+				font-family: 'Pacifico', cursive;
 			}
-			
+			article h4{
+				font-family: 'Kalim', cursive;
+			}
+			.btn{
+				width: 100%;
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
 		
