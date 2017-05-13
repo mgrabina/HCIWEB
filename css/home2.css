@@ -37,9 +37,15 @@
 #destacado{
 	border-radius: 15px;
 	max-height: 10em;	
+
+	
+	 z-index: -1; position:relative;
 }
 .carousel-caption{
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Pacifico', sans-serif;
 
 	font-size: 3em;	
+}
+article span{
+	float: left;
 }
