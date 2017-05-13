@@ -503,8 +503,8 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
       document.getElementById("from").value=from2;
       document.getElementById("to").value=to2;
       if(round=="false"){
-        alert("entro");
-        document.getElementById("dateTo").disabled=true;
+        document.getElementById("dateTo").style.display='none';
+        document.getElementById("SdateTo").style.display='none';
       }
 
 }); 
