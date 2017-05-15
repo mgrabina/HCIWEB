@@ -48,16 +48,16 @@ function validate(){
   var time= new Date();
   var roundTrip = $("#roundTrip").is(":checked");  // false or true
   if(from=="" || to=="" || isNaN(dateFrom) ) {
-   errores= errores+'Please complete all the fields.'+ "\n\r";
+   errores= errores+'Please complete all the fields.'+ "<br/>";
     ret=false;
   }
   if(roundTrip==true && isNaN(dateTo)){
-    errores= errores+'Please complete the returning date.'+ "\n\r";
+    errores= errores+'Please complete the returning date.'+ "<br/>";
     ret=false;
   }
   if(ret!=false){
     if(from==to)
-      errores=errores +'Same city.\n\r';
+      errores=errores +'Same city.<br/>';
     
     var long = availableCities.length;
     var flag= false;
@@ -69,25 +69,25 @@ function validate(){
         flag2=true;
     }
     if(flag2==false || flag== false){
-      errores=errores +'Is not a city. \n\r';
+      errores=errores +'Is not a city. <br/>';
       ret=false;
     }
 
    
     if(document.getElementById("roundTrip").checked){      
       if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
-        errores=errores +'Invalid date. \n\r';
+        errores=errores +'Invalid date. <br/>';
         ret=false;
       }
     }else{
         if(dateFrom<=time){
-          errores=errores +'Invalid date. \n\r';
+          errores=errores +'Invalid date. <br/>';
           ret=false;
         }  
       }
 
     if(dateFrom==dateTo){
-      errores=errores +'Same date. \n\r';
+      errores=errores +'Same date. <br/>';
       ret=false;
      }
 
@@ -97,7 +97,7 @@ function validate(){
     var infants = document.getElementById("infants").value;
 
     if(adults==0 && childs==0 && infants == 0){
-      errores=errores +'Please select passengers. \n\r';
+      errores=errores +'Please select passengers. <br/>';
       ret=false;
     }
    }
@@ -117,6 +117,7 @@ function validate(){
 
 
    if(document.getElementById("roundTrip").checked){
+
     document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+childs+"&infants="+infants+""; 
     }else{
       document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+childs+"&infants="+infants+"";     

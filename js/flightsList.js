@@ -225,6 +225,10 @@ if (sort)
 $.getJSON(url,function(data){
 
     var size = data.total;
+    if(size==0){
+      document.getElementById('errores').innerHTML='<div class="alert alert-danger" role="alert">There are not available flights.</div>';
+     
+    }
     var i = 0;
     $( "#tickets" ).empty();
     $( "#minDuration" ).empty();
@@ -235,6 +239,8 @@ $.getJSON(url,function(data){
     maxDuration = 0;
 
      var ticketAppend = 1;
+     
+     
 
    for( i = 0; i<size; i++){
               
