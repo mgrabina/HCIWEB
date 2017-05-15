@@ -490,13 +490,13 @@ function checkCities(){
 
   
 
-$.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=100",function(data){
+      var cities = JSON.parse(localStorage.getItem("cities")).cities;
+      var size = cities.length ;
 
-      var size = data.total;
       var i = 0;
       for( i = 0; i<size; i++){
-        availableCities.push(data.cities[i].name);
-        availableCitiesid.push(data.cities[i].id);
+        availableCities.push(cities[i].name);
+        availableCitiesid.push(cities[i].id);
       }
       var from2;
       var to2;
@@ -512,8 +512,7 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_siz
         document.getElementById("dateTo").style.display='none';
         document.getElementById("SdateTo").style.display='none';
       }
-
-}); 
+ 
   
 
 	$( function() {

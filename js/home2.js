@@ -5,18 +5,27 @@ $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
   
 $('#noJavascript').remove();
+if (!localStorage.cities) {
+  $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=100", function(data){
 
-$.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=100", function(data){
+        var size = data.total;
+        var i = 0;
+        for( i = 0; i<size; i++){
+          availableCities.push(data.cities[i].name);
+          availableCitiesid.push(data.cities[i].id);
+        }
+        localStorage.setItem("cities", JSON.stringify(data));
+  }); 
+}else{
+  var data = JSON.parse(localStorage.getItem("cities"));
 
-      var size = data.total;
-      var i = 0;
-      for( i = 0; i<size; i++){
-        availableCities.push(data.cities[i].name);
-        availableCitiesid.push(data.cities[i].id);
-      }
-
-}); 
-	
+  var size = data.total;
+        var i = 0;
+        for( i = 0; i<size; i++){
+          availableCities.push(data.cities[i].name);
+          availableCitiesid.push(data.cities[i].id);
+        }
+}
   checkCities(availableCities);
   datePicker();
 
@@ -122,6 +131,9 @@ function validate(){
     }else{
       document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+childs+"&infants="+infants+"";     
     }
+    sessionStorage.setItem();
+
+
   }
 }
 
