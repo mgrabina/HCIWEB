@@ -4,7 +4,7 @@ var availableCitiesid=[];
 $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
   
-
+$('#noJavascript').remove();
 
 $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size=100", function(data){
 
@@ -48,16 +48,16 @@ function validate(){
   var time= new Date();
   var roundTrip = $("#roundTrip").is(":checked");  // false or true
   if(from=="" || to=="" || isNaN(dateFrom) ) {
-   errores= errores+'Complete los campos'+ "\n";
+   errores= errores+'Please complete all the fields.'+ "\n\r";
     ret=false;
   }
   if(roundTrip==true && isNaN(dateTo)){
-    errores= errores+'Complete los campos'+ "\n";
+    errores= errores+'Please complete the returning date.'+ "\n\r";
     ret=false;
   }
   if(ret!=false){
     if(from==to)
-      errores=errores +'Misma ciudad\n';
+      errores=errores +'Same city.\n\r';
     
     var long = availableCities.length;
     var flag= false;
@@ -69,25 +69,25 @@ function validate(){
         flag2=true;
     }
     if(flag2==false || flag== false){
-      errores=errores +'No es una ciudad \n';
+      errores=errores +'Is not a city. \n\r';
       ret=false;
     }
 
    
     if(document.getElementById("roundTrip").checked){      
       if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
-        errores=errores +'Dia invalido \n';
+        errores=errores +'Invalid date. \n\r';
         ret=false;
       }
     }else{
         if(dateFrom<=time){
-          errores=errores +'Dia invalido \n';
+          errores=errores +'Invalid date. \n\r';
           ret=false;
         }  
       }
 
     if(dateFrom==dateTo){
-      errores=errores +'Misma fecha \n';
+      errores=errores +'Same date. \n\r';
       ret=false;
      }
 
@@ -97,7 +97,7 @@ function validate(){
     var infants = document.getElementById("infants").value;
 
     if(adults==0 && childs==0 && infants == 0){
-      errores=errores +'No hay pasajeros \n';
+      errores=errores +'Please select passengers. \n\r';
       ret=false;
     }
    }
