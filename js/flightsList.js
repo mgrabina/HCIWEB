@@ -84,15 +84,22 @@ var sortKey;
 
 
 
-var from = getQueryVariable("from");
-var to = getQueryVariable("to");
+var from = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"from");
+var to = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"to");
 
-var date2 = getQueryVariable("dateFrom"); // mm/dd/yyyy
+var date2 = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"dateFrom"); // mm/dd/yyyy
+if(sessionStorage.getItem("isRound") == "vuelta"){
+    var aux = to;
+    to = from;
+    from = aux;
+    date2
+    date2 = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"dateTo"); // mm/dd/yyyy
+}
 var date = date2.substring(6, 10) + "-" + date2.substring(0, 2) + "-" + date2.substring(3, 5);    // yyyy-mm-dd
-var round= getQueryVariable("round");
-var adults = getQueryVariable("adults");
-var children = getQueryVariable("child");
-var infants = getQueryVariable("infants");
+var round= getQueryVariable(sessionStorage.getItem("infoBusqueda"),"round");
+var adults = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"adults");
+var children = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"child");
+var infants = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"infants");
 //
 //
 //
@@ -107,18 +114,19 @@ function ticketSelected(button){
 
 	var flightNumber = button.getAttribute("flightN");
 	//alert(flightNumber);
-	if (getQueryVariable("round")=="false"){
-		
-		window.location.href = "paymentMethod.html?departure="+flightNumber ;
-	}
-
-	else{
-		if( !getQueryVariable("departure"))
-		window.location.href = "flightsList.html?from="+to+"&to="+from +"&dateFrom="+getQueryVariable("dateTo") +"&adults="+adults+"&child="+children+ "&infants="+infants+"&departure="+flightNumber ;
-
-		else
-		window.location.href = "paymentMethod.html?departure="+getQueryVariable("departure")+"&arrival="+flightNumber ;
-	}
+	if (getQueryVariable(sessionStorage.getItem("infoBusqueda"),"round")==false){
+		window.location.href = "paymentMethod.html" ;
+    sessionStorage.setItem("departureFlightNumber", flightNumber);
+	}else{
+		if( sessionStorage.getItem("isRound") == "idayvuelta"){
+		  window.location.href = "flightsList.html";
+      sessionStorage.setItem("departureFlightNumber", flightNumber);
+      sessionStorage.setItem("isRound", "vuelta");
+    }else{
+	   window.location.href = "paymentMethod.html";
+	   sessionStorage.setItem("returningFlightNumber", flightNumber);
+    }
+  }
 
 
 
@@ -139,9 +147,9 @@ function loadPageInOrder(type){
 
 
 //get the variable from the url
-function getQueryVariable(variable)
+function getQueryVariable(queryP ,variable)
 {
-       var query = window.location.search.substring(1);
+       var query = queryP;
        var vars = query.split("&");
        for (var i=0;i<vars.length;i++) {
                var pair = vars[i].split("=");
@@ -264,7 +272,7 @@ $.getJSON(url,function(data){
       var depTime = data.flights[i].outbound_routes[0].segments[0].departure.date.substring(12, 16);
       var arrTime = data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(12, 16);
 
-      var depOrArr = (getQueryVariable("departure") == false)?"departure":"arrival";
+      var depOrArr = (getQueryVariable(sessionStorage.getItem("infoBusqueda"),"departure") == false)?"departure":"arrival";
 
       
       var durationInt = parseInt(duration.substring(0,2));
@@ -674,9 +682,14 @@ function validate(){
 
 
    if(roundTrip){
-    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+children+"&infants="+infants+""; 
+    
+    var info ="&from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+children+"&infants="+infants+""; 
     }else{
-      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+children+"&infants="+infants+"";     
+      var info = "&from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+children+"&infants="+infants+"";     
     }
+    document.getElementById("searchButton").href="flightsList.html";
+    sessionStorage.setItem("infoBusqueda", info);
+
+
   }
 }

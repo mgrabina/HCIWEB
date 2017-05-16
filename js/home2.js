@@ -124,14 +124,16 @@ function validate(){
         idto=availableCitiesid[x];
     }
 
-
-   if(document.getElementById("roundTrip").checked){
-
-    document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+childs+"&infants="+infants+""; 
-    }else{
-      document.getElementById("searchButton").href="flightsList.html?from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+childs+"&infants="+infants+"";     
-    }
-    sessionStorage.setItem();
+  if(document.getElementById("roundTrip").checked){
+    var info = "&from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=true&dateTo="+document.getElementById("dateTo").value+"&adults="+adults+"&child="+childs+"&infants="+infants+""; 
+    sessionStorage.setItem("isRound", "idayvuelta");
+  }else{
+      var info="&from="+idfrom+"&to="+idto+"&dateFrom="+document.getElementById("dateFrom").value+"&round=false&dateTo=''&adults="+adults+"&child="+childs+"&infants="+infants+"";     
+     sessionStorage.setItem("isRound", "soloida");
+  
+      }
+    document.getElementById("searchButton").href="flightsList.html";
+    sessionStorage.setItem("infoBusqueda", info);
 
 
   }
