@@ -272,8 +272,10 @@ $.getJSON(url,function(data){
       var depTime = data.flights[i].outbound_routes[0].segments[0].departure.date.substring(12, 16);
       var arrTime = data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(12, 16);
 
-      var depOrArr = (getQueryVariable(sessionStorage.getItem("infoBusqueda"),"departure") == false)?"departure":"arrival";
-
+      if(sessionStorage.getItem("isRound")== "vuelta")
+        var depOrArr = "Returning";
+    else
+        var depOrArr = "Departure";
       
       var durationInt = parseInt(duration.substring(0,2));
      
