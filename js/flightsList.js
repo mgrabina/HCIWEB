@@ -100,6 +100,7 @@ var round= getQueryVariable(sessionStorage.getItem("infoBusqueda"),"round");
 var adults = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"adults");
 var children = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"child");
 var infants = getQueryVariable(sessionStorage.getItem("infoBusqueda"),"infants");
+
 //
 //
 //

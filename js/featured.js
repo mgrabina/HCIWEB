@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	//Obtengo las ciudades
 	var select, cities, long;
@@ -36,7 +37,7 @@ $(document).ready(function(){
 		    	ceromonth="0";
 		    var date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
 		    for(var i=0; i<long;i++){
-		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0'>";     
+		    	var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
 		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		    }
 	}).done(function(){
@@ -66,9 +67,15 @@ $(document).ready(function(){
 		    	month=month-12;
 		    	year++;
 		    }
-		    var date= ""+month+"/"+day+"/"+year+"";
+		   	var ceroday="";
+		    var ceromonth="";
+		    if(day<10)
+		    	ceroday="0";
+		    if(month<10)
+		    	ceromonth="0";
+		    var date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
 		    for(var i=0; i<long;i++){
-		    	var link = "<a href='flightsList.html?from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0'>";     
+				var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";
 		    	$("table").append("<tr id='fila'><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		    }	
 	}).done(function(){
@@ -76,6 +83,28 @@ $(document).ready(function(){
 	});
 	});
 
+
+
+
 });
 
+function cambio(i){
+	var datef= getQueryV("dateFrom",i);
+	var idfrom=getQueryV("from",i);
+	var idto=getQueryV("to",i);
+	var info="&from="+idfrom+"&to="+idto+"&dateFrom="+datef+"&round=false&dateTo=''&adults=1&child=0&infants=0";
+	sessionStorage.setItem("infoBusqueda", info);  
+	document.getElementById(i).href="flightsList.html";
+	sessionStorage.setItem("isRound", "false"); 
+}
+function getQueryV(variable, i){
 
+		var a= document.getElementById(i);
+		a=a.toString();
+       var vars = a.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
