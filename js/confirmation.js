@@ -32,7 +32,7 @@ function getPassengersInfo(passType, number){
         var name =  sessionStorage.getItem("name"+passenger);
         var identification;
 
-          if(sessionStorage.getItem("isDni"+passenger))
+          if(sessionStorage.getItem("isDni"+passenger)=="true")
             identification = "D.N.I.: "
           else
             identification = "Passport: "
