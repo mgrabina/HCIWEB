@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>Best Flight</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/registerReview.css">
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="jqui/jquery-ui.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/registerReview.js"></script> 
+		<link rel="stylesheet" type="text/css" href="css/jquery.rateyo.css">
+	</head>
+	<body >
+		<div id="back">
+			      		<!-- HEADER -->
+			<div class="row" id="header">
+				<div class="col-md-2">
+							<h1>Best Flight</h1>	
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home2.html" id="button" class="link">Home</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="featured.html" id="button" class="link">Featured</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="status.html" id="button" class="link">Status</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="contactus.html" id="button" class="actual">Contact us</a></h3>
+				</div>
+				<div class="col-md-2">			
+				</div>
+			</div>
+			<form class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<section id="flight">
+					<div class="col-md-5"><input type="text" class="form-control" placeholder="Flight Number" id="flightNumber" autofocus required="true" /></div>
+						<div class="col-md-5 "><select class="form-control" >
+						  <!-- Se agregan las aerolineas por JS de la api -->
+						</select></div>
+				</section>
+				<section id="review" >			
+								  <div class="form-group">
+										<div class="slider" id="friendlynessSlider"></div>
+										<div class="slider" id="foodSlider"></div>
+										<div class="slider" id="punctualySlider"></div>
+										<div class="slider" id="mileage_programSlider"></div>
+										<div class="slider" id="comfortSlider"></div>
+										<div class="slider" id="quality_priceSlider"></div>
+
+  <input type="checkbox" name="yes_reccomend"  class="form-control" value="true"> Do you recommend this flight?<br>
+<textarea  class="form-control" maxlength="120">Comments</textarea>							
+								  
+								  <button type="submit" id="boton" class="btn btn-default" >Submit</button>
+								
+							</section>
+							</div>
+							<div class="col-md-2"></div>
+						</form>
+			<footer>
+				<h5>Best Flight - All rights reserved</h5>
+			</footer>
+		</div>
+		<footer>
+			<h3>Best Flight 2017</h3>
+		</footer>
+	</body>
+</html>
