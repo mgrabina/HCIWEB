@@ -1,7 +1,5 @@
 $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
-
-
 $('#continueButton').click(validate);
 
 setPassengersInfo("adult", adults);
@@ -66,6 +64,59 @@ function setPassengersInfo(passType, number){
 
 
 function validate(){
+var date=new Date();
+var monthnow=date.getMonth()+2;
+var yearnow=date.getFullYear();
+var errores="";
+var card=document.getElementById("cardNumber").value;
+var exp_date=document.getElementById("expirationDate").value;
+var sec_code=document.getElementById("securityCode").value;
+var namep=document.getElementById("paymentName").value;
+var country=document.getElementById("country").value;
+var city=document.getElementById("city").value;
+var state=document.getElementById("state").value;
+var zip=document.getElementById("zipCode").value;
+var address=document.getElementById("address").value;
+var email=document.getElementById("email").value;
+var phoneNumber=document.getElementById("phoneNumber").value;
+document.getElementById('errores').innerHTML = '';
+if(card==""|| exp_date==""|| sec_code=="" || namep=="" || country==""|| city==""|| state==""|| zip==""|| address==""|| email==""|| phoneNumber==""){
+  errores+="Please complete all the fields  ";
+   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
+}   
+var exp_dateY=exp_date.toString().substring(0,4);
+var exp_dateM=exp_date.toString().substring(5,7);
+if(yearnow>exp_dateY){
+  errores+="Invalid date";
+}
+
+if(yearnow==exp_dateY && monthnow>exp_dateM)
+  errores+="Invalid date";
+exp_dateY=exp_dateY%2000;
+
+
+var link="http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+card+"&exp_date="+exp_dateM+exp_dateY+"&sec_code="+sec_code+"";
+$.getJSON(link,function(data){
+  try{
+    switch(data.error.code){
+      case 106: errores+="Invalid card number";
+                break;
+      case 107: errores+="Invalid expiration date";
+                break;
+      case 108: errores+="Invalid security code";
+                break;  
+      default : errores+="Try again";             
+    }
+  }catch(e){ 
+    alert("oka");
+   document.getElementById("continueButton").href = "confirmation.html";
+ }
+}).done(function(){
+  document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
+});
+
+
+
 
  //
  //
@@ -81,8 +132,7 @@ function validate(){
   saveInfo();
 
 
-  document.getElementById("continueButton").href = "confirmation.html";
-
+ 
 
   return;
 }
