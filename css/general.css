@@ -42,7 +42,7 @@ footer{
 	padding-bottom: 1px;
 	height: auto;
 	background-color: #aad5e6;
-	
+	bottom: 0px;
 	-webkit-box-shadow:0px 0px 30px 15px #ababab ;
 	-moz-box-shadow:0px 0px 30px 15px #ababab ;
 	box-shadow:0px 0px 30px 15px #ababab ;
