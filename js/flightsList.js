@@ -486,7 +486,7 @@ $.getJSON(url,function(data){
 
 // set the stars rating bar for the i ticket
  function setStar(i, rating){
-
+   rating = rating/2;
    if( rating == null)
     rating = 0;
 
