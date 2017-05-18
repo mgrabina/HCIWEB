@@ -3,11 +3,12 @@ $(document).ready(function(){
 
 
 
-getPassengersInfo("adult", adults);
-getPassengersInfo("child", children);
-getPassengersInfo("infant", infants);
-getPaymentsAndContactInfo();
-getFlightsInfo();
+  getPassengersInfo("adult", adults);
+  getPassengersInfo("child", children);
+  getPassengersInfo("infant", infants);
+  getPaymentsAndContactInfo();
+  getFlightsInfo();
+  $('button').click(book());
 
 });
 
@@ -17,7 +18,17 @@ var children = sessionStorage.getItem("children");
 var infants = sessionStorage.getItem("infants");
 
 
+function book(){
+  var url = 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=%7b%22flight_id%22:'+flight_id+',%22passengers%22:%5b%7b%22first_name%22:%22John%22,%22last_name%22:%22Doe%22,%22birthdate%22:%221969-06-02%22,%22id_type%22:1,%22id_number%22:%2217155171%22%7d%5d,%22payment%22:%7b%22installments%22:'+installments+',%22credit_card%22:%7b%22number%22:%'+credit_card_number+'%22,%22expiration%22:%22'+expiration+'%22,%22security_code%22:%22'+security_code+'%22,%22first_name%22:%22'+credit_card_first_name+'%22,%22last_name%22:%22'+credit_card_last_name+'%22%7d,%22billing_address%22:%7b%22city%22:%7b%22id%22:%22'+city_id+'%22,%22state%22:%22'+city_state+'%22,%22country%22:%7b%22id%22:%22'+country_id+'%22%7d%7d,%22zip_code%22:'+zipcode+',%22street%22:%22'+street+'%22,%22floor%22:%22'+floor+'%22,%22apartment%22:%22'+apartment+'%22%7d%7d,%22contact%22:%7b%22email%22:%22'+email+'%22,%22phones%22:%5b%22'+phone+'%22%5d%7d%7d';
+  $.getJSON(url, function(data){
+    if(data.booking){
+            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Booked. <a href="home2.html">Book another flight?</a></div>';
+          }else{
+            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Error booking</div>';
+          }
+  });
 
+}
 
 function getPassengersInfo(passType, number){
 
