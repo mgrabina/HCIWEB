@@ -96,6 +96,9 @@ function cambio(i){
 	sessionStorage.setItem("infoBusqueda", info);  
 	document.getElementById(i).href="flightsList.html";
 	sessionStorage.setItem("isRound", "false"); 
+	sessionStorage.setItem("adults", 1);
+	sessionStorage.setItem("children", 0);
+    sessionStorage.setItem("infants", 0);
 }
 function getQueryV(variable, i){
 
