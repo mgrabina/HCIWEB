@@ -10,7 +10,9 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript" src="jqui/jquery-ui.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/registerReview.js"></script> 
+		<script type="text/javascript" src="js/registerReview.js"></script>
+				<script type="text/javascript" src="js/status.js"></script> 
+ 
 		<link rel="stylesheet" type="text/css" href="css/jquery.rateyo.css">
 	</head>
 	<body >
@@ -35,33 +37,46 @@
 				<div class="col-md-2">			
 				</div>
 			</div>
+			<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8"><div id="err"></div></div>
+			<div class="col-md-2"></div>
+			</div>
 			<form class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<section id="flight">
-					<div class="col-md-5"><input type="text" class="form-control" placeholder="Flight Number" id="flightNumber" autofocus required="true" /></div>
-						<div class="col-md-5 "><select class="form-control" >
+					<h1>Flight</h1>
+					<div class="col-md-6"><input type="text" class="form-control" placeholder="Flight Number" min="0000" max="9999" id="flightNumber" autofocus required="true" /></div>
+						<div class="col-md-6 "><select required class="form-control" id="select">
 						  <!-- Se agregan las aerolineas por JS de la api -->
 						</select></div>
+						<br>
 				</section>
-				<section id="review" >			
-								  <div class="form-group">
-										<div class="slider" id="friendlynessSlider"></div>
-										<div class="slider" id="foodSlider"></div>
-										<div class="slider" id="punctualySlider"></div>
-										<div class="slider" id="mileage_programSlider"></div>
-										<div class="slider" id="comfortSlider"></div>
-										<div class="slider" id="quality_priceSlider"></div>
+				<section id="review" >
+				<h1>Review</h1>
+				<h6>Please Rate with numbers between 0 and 10</h3>
+				<div class="col-md-6" id="ratings">
+				<input required type="Number" min="1" max="10" class="form-control" id="friendliness" placeholder="Friendlyness">
+				<input  required type="Number" min="1" max="10" class="form-control" id="food" placeholder="Food">
+				<input  required type="Number" min="1" max="10" class="form-control" id="punctuality" placeholder="Punctuality">
+				</div><div class="col-md-6" id="ratings2">
+				<input  required type="Number" min="1" max="10" class="form-control" id="mileage_program" placeholder="Mileage Program">
+				<input  required type="Number" min="1" max="10" class="form-control" id="comfort" placeholder="Comfort">
+				<input  required type="Number" min="1" max="10" class="form-control" id="quality_price" placeholder="Quality Price"> 	
+				</div>					
 
-  <input type="checkbox" name="yes_reccomend"  class="form-control" value="true"> Do you recommend this flight?<br>
-<textarea  class="form-control" maxlength="120">Comments</textarea>							
+  				<input  type="checkbox" id="checkbox" name="yes_reccomend" value="true"> Do you recommend this flight?<br>
+				<textarea class="form-control" maxlength="256" placeholder="Comments"></textarea>							
 								  
-								  <button type="submit" id="boton" class="btn btn-default" >Submit</button>
+								  
 								
 							</section>
+							<button type="button" id="btn" class="btn btn-info">Submit</button>
 							</div>
 							<div class="col-md-2"></div>
 						</form>
+						<br>
 			<footer>
 				<h5>Best Flight - All rights reserved</h5>
 			</footer>

@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	getAirlines();
+	function getAirlines(){
 	var select, aerolineas, long;
 	$.getJSON("http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines",function(data){
 		 aerolineas = data.airlines;
@@ -7,6 +9,7 @@ $(document).ready(function(){
 	    for(var i=0; i<long;i++)
 	    	$("select").append("<option value='"+ data.airlines[i].id+"'>"+data.airlines[i].name+"</option>");	
 	});		
+}
 });
 
 	function buscarEstado(){

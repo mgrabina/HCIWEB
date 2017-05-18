@@ -256,9 +256,8 @@ $("#hoursSelected").append(maxDuration + "hs max");
 }
 
 
-//load the airlines availables for the filter
+//load the airlines availables
 function loadAirlines(){
-
   $.getJSON("http://hci.it.itba.edu.ar/v1/api/misc.groovy?method=getairlines",function(data){
         var size = data.total;
         airlinesNumber = size;

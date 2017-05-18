@@ -7,3 +7,25 @@ section{
 	opacity: .9;
 	margin-bottom: 1em;
 }
+#ratings{
+	padding-left: 0;
+}
+#ratings2{
+	padding-right: 0;
+}
+h1{
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+	text-decoration: bold;
+	margin-top: -0.3em;
+}
+h6{
+	font-family: 'Kalam';
+	text-decoration: bold;
+}
+input{
+	font-family: 'Kalam';
+}
+button{
+	width: 100%;
+}
