@@ -8,7 +8,7 @@ $(document).ready(function(){
   getPassengersInfo("infant", infants);
   getPaymentsAndContactInfo();
   getFlightsInfo();
-  $('button').click(book());
+  $('#btn').click(book());
 
 });
 
@@ -19,24 +19,49 @@ var infants = sessionStorage.getItem("infants");
 
 
 function book(){
-  var flight_id;
-  var installments;
-  var credit_card_number;
-  var expiration;
-  var credit_card_first_name;
-  var credit_card_last_name;
-  var security_code;
-  var city_id;
-  var city_state;
-  var country_id;
-  var zipcode;
-  var street;
-  var apartment;
-  var floor;
-  var email;
-  var phone;
-  var url = 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=%7b%22flight_id%22:'+flight_id+',%22passengers%22:%5b%7b%22first_name%22:%22John%22,%22last_name%22:%22Doe%22,%22birthdate%22:%221969-06-02%22,%22id_type%22:1,%22id_number%22:%2217155171%22%7d%5d,%22payment%22:%7b%22installments%22:'+installments+',%22credit_card%22:%7b%22number%22:%'+credit_card_number+'%22,%22expiration%22:%22'+expiration+'%22,%22security_code%22:%22'+security_code+'%22,%22first_name%22:%22'+credit_card_first_name+'%22,%22last_name%22:%22'+credit_card_last_name+'%22%7d,%22billing_address%22:%7b%22city%22:%7b%22id%22:%22'+city_id+'%22,%22state%22:%22'+city_state+'%22,%22country%22:%7b%22id%22:%22'+country_id+'%22%7d%7d,%22zip_code%22:'+zipcode+',%22street%22:%22'+street+'%22,%22floor%22:%22'+floor+'%22,%22apartment%22:%22'+apartment+'%22%7d%7d,%22contact%22:%7b%22email%22:%22'+email+'%22,%22phones%22:%5b%22'+phone+'%22%5d%7d%7d';
-  $.getJSON(url, function(data){
+  //Falta poner valores y hacer iterativo personas y telefonos
+  var json= {};
+  json["flight_id"] = ''; 
+  var passengers  = [];
+  for(var i=0;i<(Number(adults)+Number(children)+Number(infants));i++){
+    passengers[i] ={
+      "first_name" : '',
+      "last_name" : '',
+      "birthdate" : '',
+      "id_type" : '',
+      "id_number" : ''
+    };
+  }
+  json["passengers"] = passengers;
+  json["payment"] = {
+    "installments":sessionStorage.getItem("installments"),
+    "credit_card":{
+      "number" :  sessionStorage.getItem("cardNumber"),
+      "expiration" : '',
+      "security_code" : sessionStorage.getItem("securityCode"),
+      "first_name" : '',
+      "last_name" : ''
+    },
+    "billing_address" : {
+      "city" : {
+        "id" : sessionStorage.getItem("cityId"),
+        "state" : sessionStorage.getItem("state"),
+        "country" : {
+          "id" : sessionStorage.getItem("countryId")
+        }
+      },
+      "zip_code" : sessionStorage.getItem("zipCode"),
+      "street" : '',
+      "floor" : sessionStorage.getItem("floor"),
+      "apartment" : ''
+    },
+    "contact" : {
+      "email" : sessionStorage.getItem("email"),
+      "phones" : [ sessionStorage.getItem("phoneNumber") ]
+    }
+  };
+  alert("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking="+JSON.stringify(json));
+  $.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking="+JSON.stringify(json), function(data){
     if(data.booking){
             document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Booked. <a href="home2.html">Book another flight?</a></div>';
           }else{
@@ -44,6 +69,9 @@ function book(){
           }
   });
 
+  if(! sessionStorage.getItem("isRound")=='false'){
+    //Book the return
+  }
 }
 
 function getPassengersInfo(passType, number){
