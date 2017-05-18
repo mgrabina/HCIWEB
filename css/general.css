@@ -55,3 +55,7 @@ font-family: 'Kalam';
 color: white;
 
 }
+#logo{
+	max-width: 80%;
+	height: auto;
+}
