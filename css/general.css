@@ -3,8 +3,8 @@
 					background-color: #aad5e6;
 font-family: 'Pacifico', cursive;
 					color: #ffffff;
-					padding-left: 2em;
-					
+					margin: 0;
+					width: 100%;
 					-webkit-box-shadow:0px 0px 30px 15px #ababab ;
 					-moz-box-shadow:0px 0px 30px 15px #ababab ;
 					box-shadow:0px 0px 30px 15px #ababab ;
@@ -16,9 +16,12 @@ body {
         		background-size: 100% 100%;
     			background-repeat: no-repeat;
     		    background-attachment: fixed;
-
+				
 			}
-
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .pbChooseFlight{
 	background-color: #86A3DE
 }
@@ -34,9 +37,10 @@ body {
 }
 footer{
 	width: 100%;
-	position: fixed;
-	height: 15px;
-	bottom: 0;
+	margin: 0 auto;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: auto;
 	background-color: #aad5e6;
 	
 	-webkit-box-shadow:0px 0px 30px 15px #ababab ;
@@ -45,10 +49,11 @@ footer{
 	opacity: .8;
 }
 footer h3{
-	position: fixed;
 font-family: 'Pacifico', cursive;
 	color: #ffffff;
 	text-align: center;
+	font-size: 1em;
+	margin: 0;
 }
 .linkbar{
 font-family: 'Kalam';
