@@ -22,8 +22,6 @@ var infants = sessionStorage.getItem("infants");
 
 
 
-
-
 function setPassengersInfo(passType, number){
 
 
@@ -64,10 +62,104 @@ function setPassengersInfo(passType, number){
 
 
 function validate(){
-var date=new Date();
+  var errores="";
+  var date=new Date();
+  var d=date.getUTCDate();
+  var m=date.getMonth()+1;
+  var y=date.getFullYear();
+  var age;
+  var name;
+  var idp;
+  var monthage;
+  var yearage;
+  var dayage;
+  for(i=1;i<=adults && errores=="";i++){
+  name=document.getElementById("nameadult"+i+"").value;
+  idp=document.getElementById("passengerIdadult"+i+"").value;
+  if(name==""||idp=="")
+    errores+="Please complete all the fields."+"<br/>";
+  }
+
+  for(i=1;i<=children && errores=="";i++){
+  name=document.getElementById("namechild"+i+"").value;
+  idp=document.getElementById("passengerIdchild"+i+"").value;
+  if(name==""||idp=="")
+    errores+="Please complete all the fields."+"<br/>";
+  }
+
+  for(i=1;i<=infants && errores=="";i++){
+  name=document.getElementById("nameinfant"+i+"").value;
+  idp=document.getElementById("passengerIdinfant"+i+"").value;
+  if(name==""||idp=="")
+    errores+="Please complete all the fields."+"<br/>";
+  }
+
+  for(i=1;i<=adults;i++){
+    age=document.getElementById("birthDateadult"+i+"").value;
+    yearage=age.substring(0,4);
+    monthage=age.substring(5,7);
+    dayage=age.substring(8,10)
+    if((y-yearage)<11)
+      errores+="Please check the adult number "+i+" age."+"<br/>";
+    if(y-yearage==11){
+      if(m<monthage)
+        errores+="Please check the adult number "+i+" age."+"<br/>";
+      else
+        if(m==monthage)
+          if(d<dayage)
+            errores+="Please check the adult number "+i+" age."+"<br/>";
+    }
+
+  }
+  for(i=1;i<=children;i++){
+
+    age=document.getElementById("birthDatechild"+i+"").value;
+    yearage=age.substring(0,4);
+    monthage=age.substring(5,7);
+    dayage=age.substring(8,10)
+    if((y-yearage)>11)
+      errores+="Please check the child number "+i+" age."+"<br/>";
+    if(y-yearage==11){
+      if(m>monthage)
+        errores+="Please check the child number "+i+" age."+"<br/>";
+      else
+        if(m==monthage)
+          if(d>dayage)
+            errores+="Please check the child number "+i+" age."+"<br/>";
+    }
+    if((y-yearage)<2)
+      errores+="Please check the child number "+i+" age."+"<br/>";
+    if(y-yearage==2){
+      if(m<monthage)
+        errores+="Please check the child number "+i+" age."+"<br/>";
+      else
+        if(m==monthage)
+          if(d<dayage)
+            errores+="Please check the child number "+i+" age."+"<br/>";
+    }
+  }
+  for(i=1;i<=infants;i++){
+    age=document.getElementById("birthDateinfant"+i+"").value;
+    yearage=age.substring(0,4);
+    monthage=age.substring(5,7);
+    dayage=age.substring(8,10)
+    if((y-yearage)>2)
+      errores+="Please check the infant number "+i+" age."+"<br/>";
+    if(y-yearage==2){
+      if(m>monthage)
+        errores+="Please check the infant number "+i+" age."+"<br/>";
+      else
+        if(m==monthage)
+          if(d>dayage)
+            errores+="Please check the infant number "+i+" age."+"<br/>";
+    }
+  }
+
+
+
 var monthnow=date.getMonth()+2;
 var yearnow=date.getFullYear();
-var errores="";
+
 var card=document.getElementById("cardNumber").value;
 var exp_date=document.getElementById("expirationDate").value;
 var sec_code=document.getElementById("securityCode").value;
@@ -81,17 +173,18 @@ var email=document.getElementById("email").value;
 var phoneNumber=document.getElementById("phoneNumber").value;
 document.getElementById('errores').innerHTML = '';
 if(card==""|| exp_date==""|| sec_code=="" || namep=="" || country==""|| city==""|| state==""|| zip==""|| address==""|| email==""|| phoneNumber==""){
-  errores+="Please complete all the fields  ";
+   if(errores!="Please complete all the fields."+"<br/>") 
+      errores+="Please complete all the fields."+"<br/>";
    document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
-}   
+}else{
 var exp_dateY=exp_date.toString().substring(0,4);
 var exp_dateM=exp_date.toString().substring(5,7);
 if(yearnow>exp_dateY){
-  errores+="Invalid date";
+  errores+="Invalid expiration card date"+"<br/>";
 }
 
 if(yearnow==exp_dateY && monthnow>exp_dateM)
-  errores+="Invalid date";
+  errores+="Invalid expiration card date"+"<br/>";
 exp_dateY=exp_dateY%2000;
 
 
@@ -99,24 +192,24 @@ var link="http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditc
 $.getJSON(link,function(data){
   try{
     switch(data.error.code){
-      case 106: errores+="Invalid card number";
+      case 106: errores+="Invalid card number"+"<br/>";
                 break;
-      case 107: errores+="Invalid expiration date";
+      case 107: errores+="Invalid expiration date"+"<br/>";
                 break;
-      case 108: errores+="Invalid security code";
+      case 108: errores+="Invalid security code"+"<br/>";
                 break;  
-      default : errores+="Try again";             
+      default : errores+="Please try again"+"<br/>";             
     }
   }catch(e){ 
-    alert("oka");
    document.getElementById("continueButton").href = "confirmation.html";
+   window.location="confirmation.html";
  }
 }).done(function(){
   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
 });
 
 
-
+}
 
  //
  //
@@ -168,14 +261,11 @@ function saveInfo(){
   var expirationDate =  document.getElementById("expirationDate").value;
   var paymentName =  document.getElementById("paymentName").value;
   var securityCode =  document.getElementById("securityCode").value;
-  var installments =  document.getElementById("installments").value;
-
   sessionStorage.setItem("cardNumber", cardNumber); 
   sessionStorage.setItem("expirationDate", expirationDate); 
   sessionStorage.setItem("paymentName", paymentName); 
   sessionStorage.setItem("securityCode", securityCode); 
-  sessionStorage.setItem("installments", installments); 
-
+ 
 
 
 
@@ -276,11 +366,9 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcountries", fun
 }); 
 
 
-
-
-
-
-
-
-
 }
+
+
+
+
+
