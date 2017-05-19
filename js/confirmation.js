@@ -8,8 +8,7 @@ $(document).ready(function(){
   getPassengersInfo("infant", infants);
   getPaymentsAndContactInfo();
   getFlightsInfo();
-  $('#btn').click(book());
-
+  
 });
 
 
@@ -20,8 +19,8 @@ var infants = sessionStorage.getItem("infants");
 
 function book(){
   //Falta poner valores y hacer iterativo personas y telefonos
-  var json= {};
-  json["flight_id"] = ''; 
+  var booking= {};
+  booking["flight_id"] = ''; 
   var passengers  = [];
   for(var i=0;i<(Number(adults)+Number(children)+Number(infants));i++){
     passengers[i] ={
@@ -32,8 +31,8 @@ function book(){
       "id_number" : ''
     };
   }
-  json["passengers"] = passengers;
-  json["payment"] = {
+  booking["passengers"] = passengers;
+  booking["payment"] = {
     "installments":sessionStorage.getItem("installments"),
     "credit_card":{
       "number" :  sessionStorage.getItem("cardNumber"),
@@ -60,12 +59,13 @@ function book(){
       "phones" : [ sessionStorage.getItem("phoneNumber") ]
     }
   };
-  alert("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking="+JSON.stringify(json));
-  $.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking="+JSON.stringify(json), function(data){
+  var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
+  url = encodeURI(url);
+  $.getJSON(url, function(data){
     if(data.booking){
             document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Booked. <a href="home2.html">Book another flight?</a></div>';
           }else{
-            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Error booking</div>';
+            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking. Code: '+data.error.code+'</div>';
           }
   });
 
