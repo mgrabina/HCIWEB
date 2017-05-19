@@ -63,14 +63,25 @@ function book(){
   url = encodeURI(url);
   $.getJSON(url, function(data){
     if(data.booking){
-            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Booked. <a href="home2.html">Book another flight?</a></div>';
+            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">First Flight Booked. <a href="home2.html">Book another flight?</a></div>';
           }else{
-            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking. Code: '+data.error.code+'</div>';
+            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking the first flight. Code: '+data.error.code+'</div>';
           }
   });
 
   if(! sessionStorage.getItem("isRound")=='false'){
     //Book the return
+    booking["flight_id"] = ''; 
+    var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
+    url = encodeURI(url);
+    $.getJSON(url, function(data){
+    if(data.booking){
+            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Second Flight Booked. <a href="home2.html">Book another flight?</a></div>';
+          }else{
+            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking the second flight. Code: '+data.error.code+'</div>';
+          }
+    });
+
   }
 }
 

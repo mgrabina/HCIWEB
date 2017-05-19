@@ -82,7 +82,7 @@ $(document).ready(function(){
 		    for(var i=0; i<long;i++){
 		    	var mediaLink;
     			$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?tags="+deals[i].city.name+"&format=json",function(data){
-    				mediaLink = data.items.media.m;
+    				mediaLink = data.items[0].media.m;
     			});
 				var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";
 		    	$("table").append("<tr id='fila'><td><img src='"+mediaLink+"' /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
