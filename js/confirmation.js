@@ -20,10 +20,18 @@ var infants = sessionStorage.getItem("infants");
 function book(){
   //Falta poner valores y hacer iterativo personas y telefonos
   var booking= {};
-  booking["flight_id"] = ''; 
+  booking["flight_id"] = sessionStorage.getItem("departureFlightNumber"); 
   var passengers  = JSON.parse(sessionStorage.getItem("passengersData"));
-  alert();
-  booking["passengers"] = passengers;
+  alert(passengers);
+  if(passengers!= null)
+    booking["passengers"] = passengers;
+  else 
+    booking["passengers"] = [{"first_name" : "prueba",
+      "last_name" : "pruebaa",
+      "birthdate" : "1969-06-02",
+      "id_type" : 1,
+      "id_number" : 12313123
+    }]
   booking["payment"] = {
     "installments":sessionStorage.getItem("installments"),
     "credit_card":{
@@ -52,7 +60,9 @@ function book(){
     }
   };
   var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
+  
   url = encodeURI(url);
+  console.log(url);
   $.getJSON(url, function(data){
     if(data.booking){
             document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">First Flight Booked. <a href="home2.html">Book another flight?</a></div>';
@@ -63,7 +73,7 @@ function book(){
 
   if(! sessionStorage.getItem("isRound")=='false'){
     //Book the return
-    booking["flight_id"] = ''; 
+    booking["flight_id"] = sessionStorage.getItem("returningFlightNumber"); 
     var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
     url = encodeURI(url);
     $.getJSON(url, function(data){
