@@ -1,11 +1,16 @@
-
+var deals;
+var i;
+var long;
+var date;
+var pic = [];
+var com=[];
 $(document).ready(function(){
 	//Obtengo las ciudades
-	var select, cities, long;
+	var select, cities;
 	select= document.getElementsByTagName("select");
 	$.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities",function(data){
 		 cities = data.cities;
-		 		       	
+		 		   	
 	     long=cities.length;
 	    for(var i=0; i<long;i++)
 	    	$("select").append("<option value="+ data.cities[i].id+">"+data.cities[i].name+"</option>");
@@ -13,7 +18,7 @@ $(document).ready(function(){
 	    	$("select").append("<option value="+ data.cities[i].id+">"+data.cities[i].name+"</option>");
 	    $("select").disabled=true;
 		$.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getflightdeals&from="+$("select").val(),function(data){
-			 var deals = data.deals;
+			 deals = data.deals;
 			 var table= document.getElementsByTagName("table");		       	
 		     long=deals.length;
 		     $("table").append("<tr id='primeraFila'><td>Deal</td><td>City</td><td>Country</td><td>Price</td></tr>");
@@ -35,18 +40,32 @@ $(document).ready(function(){
 		    	ceroday="0";
 		    if(month<10)
 		    	ceromonth="0";
-		    var date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
-		    for(var i=0; i<long;i++){
+		    date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
+		    for(i=0; i<long-1;i++){
     			var mediaLink;
-    			$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?tags="+deals[i].city.name+"&format=json",function(data){
-    				mediaLink = data.items.media.m;
-    			});
-		    	
-		    	var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
-		    	$("table").append("<tr id='fila'><td><img src='"+mediaLink+"' /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
-		    }
+    			 var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+				  com[i]=$.getJSON( flickerAPI, {
+				    tags: deals[i].city.name,
+				    tagmode: "any",
+				    format: "json"
+				  }).done(function(data) {
+		    			$.each( data.items, function( i, item ) {
+       						pic.push(item.media.m)
+        					if ( i === 1 ) 
+          						return false;
+          				});
+
+        });}
+		    
 	}).done(function(){
-		$("select").removeAttr("disabled");  	
+		com[long-2].complete(function(){
+		for(i=0; i<long-1;i++){
+			mediaLink=pic[i];
+			var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
+			$("table").append("<tr id='fila'><td><img src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+		}
+		$("select").removeAttr("disabled");  
+		});	
 	});		
 	});
 	
@@ -79,17 +98,32 @@ $(document).ready(function(){
 		    if(month<10)
 		    	ceromonth="0";
 		    var date= ""+ceromonth+month+"/"+ceroday+day+"/"+year+"";
-		    for(var i=0; i<long;i++){
-		    	var mediaLink;
-    			$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?tags="+deals[i].city.name+"&format=json",function(data){
-    				mediaLink = data.items[0].media.m;
-    			});
-				var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";
-		    	$("table").append("<tr id='fila'><td><img src='"+mediaLink+"' /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
-		    }	
+		   for(i=0; i<long-1;i++){
+    			var mediaLink;
+    			 var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+				  com[i]=$.getJSON( flickerAPI, {
+				    tags: deals[i].city.name,
+				    tagmode: "any",
+				    format: "json"
+				  }).done(function(data) {
+		    			$.each( data.items, function( i, item ) {
+       						pic.push(item.media.m)
+        					if ( i === 1 ) 
+          						return false;
+          				});
+
+        });}
+		    
 	}).done(function(){
-		$("select").removeAttr("disabled");
-	});
+		com[long-2].complete(function(){
+		for(i=0; i<long-1;i++){
+			mediaLink=pic[i];
+			var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
+			$("table").append("<tr id='fila'><td><img src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+		}
+		$("select").removeAttr("disabled");  
+		});	
+	});		
 	});
 
 
