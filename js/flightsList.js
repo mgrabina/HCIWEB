@@ -423,7 +423,7 @@ $.getJSON(url,function(data){
                   "</div>" +
                   "<div class=\"col-md-2 dark\">" +
                     "<h7>"+ passengersAd + passengersCh + passengersIn +"</h7>" +
-                    "<button type=\"button\" class=\"btn btn-link\" data-container=\"body\" id=\"detailsbtn\" data-toggle=\"popover\" data-placement=\"right\" data-content=\""+ prices +"\">Details</button>" +
+                    "<button type=\"button\" class=\"btn btn-link\" data-trigger=\"focus\" data-container=\"body\" id=\"detailsbtn\" data-toggle=\"popover\" data-placement=\"right\" data-content=\""+ prices +"\">Details</button>" +
                   "</div>" +
                 "</div>" +
                 
