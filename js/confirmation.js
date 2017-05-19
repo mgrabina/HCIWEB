@@ -36,7 +36,7 @@ function book(){
     "installments":sessionStorage.getItem("installments"),
     "credit_card":{
       "number" :  sessionStorage.getItem("cardNumber"),
-      "expiration" : '',
+      "expiration" : sessionStorage.getItem("expirationDate"),
       "security_code" : sessionStorage.getItem("securityCode"),
       "first_name" : '',
       "last_name" : ''
@@ -50,9 +50,9 @@ function book(){
         }
       },
       "zip_code" : sessionStorage.getItem("zipCode"),
-      "street" : '',
+      "street" : sessionStorage.getItem("street"),
       "floor" : sessionStorage.getItem("floor"),
-      "apartment" : ''
+      "apartment" : sessionStorage.getItem("apartment")
     },
     "contact" : {
       "email" : sessionStorage.getItem("email"),
