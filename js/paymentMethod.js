@@ -232,10 +232,12 @@ $.getJSON(link,function(data){
  //
  //
  //
-
+  var passengers  = [];
   saveInfoPass("adult", adults);
   saveInfoPass("child", children);
   saveInfoPass("infant", infants);
+  alert(passengers); 
+  sessionStorage.setItem("passengersData", passengers);
   saveInfo();
 
 
@@ -250,7 +252,7 @@ $.getJSON(link,function(data){
 function saveInfoPass(passType, number){
 
 
-  for(var i=1; i<=number; i++){
+  for(var i=passengers.lenght(); i<=(passengers.lenght() + number-1); i++){
 
       passenger = passType + i;
 
@@ -258,13 +260,14 @@ function saveInfoPass(passType, number){
       var birthDate = document.getElementById("birthDate"+passenger).value;  //yyyy-mm-dd
       var isDni = document.getElementById("optionRadioDni"+passenger).checked; // true or false
       var passengerId = document.getElementById("passengerId"+passenger).value;
-
-     
-     sessionStorage.setItem("name"+passenger, name); 
-     sessionStorage.setItem("birthDate"+passenger, birthDate); 
-     sessionStorage.setItem("isDni"+passenger, isDni); 
-     sessionStorage.setItem("passengerId"+passenger, passengerId); 
-     
+      passengers[i] ={
+      "first_name" : name.split(" ")[0],
+      "last_name" : name.split(" ")[1],
+      "birthdate" : birthDate,
+      "id_type" : isDni,
+      "id_number" : passengerId
+    };
+    alert(passengers[i]);
       
   }
 

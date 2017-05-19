@@ -21,16 +21,8 @@ function book(){
   //Falta poner valores y hacer iterativo personas y telefonos
   var booking= {};
   booking["flight_id"] = ''; 
-  var passengers  = [];
-  for(var i=0;i<(Number(adults)+Number(children)+Number(infants));i++){
-    passengers[i] ={
-      "first_name" : '',
-      "last_name" : '',
-      "birthdate" : '',
-      "id_type" : '',
-      "id_number" : ''
-    };
-  }
+  var passengers  = JSON.parse(sessionStorage.getItem("passengersData"));
+  alert();
   booking["passengers"] = passengers;
   booking["payment"] = {
     "installments":sessionStorage.getItem("installments"),
@@ -38,8 +30,8 @@ function book(){
       "number" :  sessionStorage.getItem("cardNumber"),
       "expiration" : sessionStorage.getItem("expirationDate"),
       "security_code" : sessionStorage.getItem("securityCode"),
-      "first_name" : '',
-      "last_name" : ''
+      "first_name" : sessionStorage.getItem("paymentName").split("")[0],
+      "last_name" : sessionStorage.getItem("paymentName").split("")[1]
     },
     "billing_address" : {
       "city" : {
