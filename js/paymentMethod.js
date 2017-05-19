@@ -151,8 +151,20 @@ function validate(){
       else
         if(m==monthage)
           if(d>dayage)
+            errores+="Please check the infant number "+i+" age."+"<br/>";    
+    }
+    if((y-yearage)<0)
+      errores+="Please check the infant number "+i+" age."+"<br/>";
+    if(y-yearage==0){
+      if(m<monthage)
+        errores+="Please check the infant number "+i+" age."+"<br/>";
+      else
+        if(m==monthage)
+          if(d<dayage)
             errores+="Please check the infant number "+i+" age."+"<br/>";
     }
+
+
   }
 
 
@@ -187,7 +199,7 @@ if(yearnow==exp_dateY && monthnow>exp_dateM)
   errores+="Invalid expiration card date"+"<br/>";
 exp_dateY=exp_dateY%2000;
 
-
+if(errores==""){
 var link="http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=validatecreditcard&number="+card+"&exp_date="+exp_dateM+exp_dateY+"&sec_code="+sec_code+"";
 $.getJSON(link,function(data){
   try{
@@ -209,9 +221,11 @@ $.getJSON(link,function(data){
 });
 
 
+}else{
+   document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
 }
 
- //
+ }//
  //
  //
  //VALIDAR
