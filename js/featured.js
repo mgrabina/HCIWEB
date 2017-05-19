@@ -5,6 +5,18 @@ var date;
 var pic = [];
 var com=[];
 $(document).ready(function(){
+	function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+
 	//Obtengo las ciudades
 	var select, cities;
 	select= document.getElementsByTagName("select");
@@ -62,7 +74,7 @@ $(document).ready(function(){
 		for(i=0; i<long-1;i++){
 			mediaLink=pic[i];
 			var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
-			$("table").append("<tr id='fila'><td><img src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+			$("table").append("<tr id='fila'><td><img class='img-rounded' src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		}
 		$("select").removeAttr("disabled");  
 		});	
@@ -119,7 +131,7 @@ $(document).ready(function(){
 		for(i=0; i<long-1;i++){
 			mediaLink=pic[i];
 			var link = "<a href='flightsList.html?&from="+ $("select").val()+"&to="+deals[i].city.id+"&dateFrom="+date+"&round=false&dateTo=&adults=1&child=0&infants=0' onclick='cambio("+i+");' id="+i+">";     
-			$("table").append("<tr id='fila'><td><img src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
+			$("table").append("<tr id='fila'><td><img class='img-rounded' src="+mediaLink+" /></td><td>"+link+deals[i].city.name+"</a></td><td>"+deals[i].city.country.name+"</td><td>"+deals[i].price+"</td></tr>");
 		}
 		$("select").removeAttr("disabled");  
 		});	

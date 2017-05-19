@@ -25,3 +25,22 @@ font-family: 'Pacifico', cursive;
 				padding-top: 1em;
 				opacity: .9;
 }
+img{
+	width: 5em;
+	height: 5em;
+	opacity: .9;
+
+}
+#map{
+	width: 100%;
+	height: 15em;
+	margin-top: -1em;
+}
+label{
+	float: left;
+	font-family: 'Kalam';
+}
+#logo{
+	width: 80%;
+	height: auto;
+}
