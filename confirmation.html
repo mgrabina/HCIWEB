@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title>Best Flight</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/Confirmation.css">
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		
+		<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
+		<script type="text/javascript" src="js/confirmation.js"></script> 
+
+	</head>
+	<body >
+    	      		<!-- HEADER -->
+			<div class="row" id="header">
+				<div class="col-md-2">
+							<img id="logo" src="img/logo.png">	
+				</div>
+				<div class="col-md-2">
+					<h3><a href="home2.html" id="button" class="link">Home</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="featured.html" id="button" class="link">Featured</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="status.html" id="button" class="link">Status</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="contactus.html" id="button" class="link">Contact us</a></h3>
+				</div>
+				<div class="col-md-2">			
+				</div>
+			</div>
+
+		<h3></h3>
+
+		<div class="row">
+			<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<!-- PROGRESS BAR -->
+				<div class="col-md-12">	
+					
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped pbChooseFlight" role="progressbar" style="width:33%">
+						    <a href="flightsList.html" id="chooseAFlightLink" class="linkbar">Choose a flight</a>
+						  </div>
+						  <div class="progress-bar progress-bar-striped pbPaymentMethod " role="progressbar" style="width:33%">
+						    <a href="paymentMethod.html" id="paymentMethodLink" class="linkbar">Information</a>
+						  </div>
+						  <div class="progress-bar progress-bar-striped pbConfirmation" role="progressbar" style="width:34%">
+						    <a href="confirmation.html" id="confirmationLink" class="linkbar">Confirmation</a>
+						  </div>
+						  
+						</div>
+				</div>
+			</div>
+			</div>
+			<!-- CONFIRMATION -->
+			<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8"><div id="err"></div></div>
+			<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+			<div class="col-md-1"></div>
+			<section id="data" class="col-md-10">
+				<button type="button" id="btn" onclick="book()" name="confirm" class="btn btn-info">Confirm</button>
+
+				<article id="FirstFlightData">
+					<h3>First Flight Info</h3>
+					<div id="firstFlightInfo">
+
+					</div>
+				</article>
+				
+				<div id="secondFlightInfo">
+						
+				</div>
+
+
+				<article class="passInfo" id="passengersInfo">
+					<h3>Passengers Info</h3>
+					<table class="table table-hover" >
+
+						<div id="passengerInfo"	>
+
+							
+						</div>	
+                   
+						
+					</table>
+				</article>
+				<article id="PaymentData" class="payment">
+					<h3>Payment Info</h3>
+					<div id="paymentInfo">
+
+					</div>
+				</article>
+
+				<article id="billing" class="billing">
+					<h3>Billing Info</h3>
+					<div id="billingInfo">
+
+					</div>
+				</article>
+
+				<article class="contact" id="Contact">
+					<h3>Contact</h3>
+					<div id="contactInfo">
+
+					</div>
+				</article>
+
+
+
+							</section>
+		<div class="col-md-1">					
+		</div>	
+		</div>
+		<br>
+		<footer>
+			<h3>Best Flight 2017</h3>
+		</footer>
+	</body>
+</html>
