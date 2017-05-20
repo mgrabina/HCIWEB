@@ -128,7 +128,7 @@ function ticketSelected(button){
 
 
   
-	//alert(flightNumber);
+	
 	if (sessionStorage.getItem("isRound")=="false"){
 		
     sessionStorage.setItem("departureFlightNumber", flightNumber);
@@ -167,7 +167,7 @@ function ticketSelected(button){
     
  
 
-    //  alert( sessionStorage.getItem("departureAirline"));
+    
 
       window.location.href = "flightsList.html?departure=true";
     }else{
@@ -203,6 +203,7 @@ function loadPageInOrder(type){
 
 	sort = true
 	sortKey = "&sort_key=" + type;
+	pageInFocus = 1;
 	loadTickets();
 
 }
