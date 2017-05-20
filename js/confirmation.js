@@ -32,7 +32,11 @@ function book(){
        $.getJSON(url,function(data){
 
           //for testing
-          alert(data.booking);
+          if(data.booking)
+                document.getElementById('errores').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="home2.html">Book another?</a></div>';
+          else
+                document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">Error booking.</div>';
+
         })
 
        if( url2a != ""){

@@ -8,7 +8,7 @@ $('#noJavascript').remove();
 var totalc;
 var sizec=10;
 var flagc=0;
-if (!localStorage.cities) {
+if (!localStorage.cities || !localStorage.airport) {
   $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcities&page_size="+sizec+"", function(data){
 
         totalc = data.total;
@@ -62,7 +62,8 @@ if (!localStorage.cities) {
         localStorage.setItem("airport", JSON.stringify(data));
       });
     } 
-});}
+});
+}
 else{
   var data = JSON.parse(localStorage.getItem("cities"));
   var data2 = JSON.parse(localStorage.getItem("airport"));
