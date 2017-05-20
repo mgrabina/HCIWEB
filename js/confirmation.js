@@ -1,6 +1,8 @@
 $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
 
+
+
    sessionStorage.setItem("installments", "1");
 
   getPassengersInfo("adult", adults);
@@ -16,76 +18,37 @@ var adults = sessionStorage.getItem("adults");
 var children = sessionStorage.getItem("children");
 var infants = sessionStorage.getItem("infants");
 
+var url1 = "http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking=%7b%22flight_id%22:" 
+var url2d = "";
+var url2a = "";
+var url3 = ",%22passengers%22:%5b";
+var url4 = "%5d,";
 
 function book(){
-  //Falta poner valores y hacer iterativo personas y telefonos
-  var booking= {};
-  booking["flight_id"] = sessionStorage.getItem("departureFlightNumber"); 
-  var passengers  = JSON.parse(sessionStorage.getItem("passengersData"));
-  alert(passengers);
-  if(passengers!= null)
-    booking["passengers"] = passengers;
-  else 
-    booking["passengers"] = [{"first_name" : "prueba",
-      "last_name" : "pruebaa",
-      "birthdate" : "1969-06-02",
-      "id_type" : 1,
-      "id_number" : 12313123
-    }]
-  booking["payment"] = {
-    "installments":sessionStorage.getItem("installments"),
-    "credit_card":{
-      "number" :  sessionStorage.getItem("cardNumber"),
-      "expiration" : sessionStorage.getItem("expirationDate"),
-      "security_code" : sessionStorage.getItem("securityCode"),
-      "first_name" : sessionStorage.getItem("paymentName").split("")[0],
-      "last_name" : sessionStorage.getItem("paymentName").split("")[1]
-    },
-    "billing_address" : {
-      "city" : {
-        "id" : sessionStorage.getItem("cityId"),
-        "state" : sessionStorage.getItem("state"),
-        "country" : {
-          "id" : sessionStorage.getItem("countryId")
-        }
-      },
-      "zip_code" : sessionStorage.getItem("zipCode"),
-      "street" : sessionStorage.getItem("street"),
-      "floor" : sessionStorage.getItem("floor"),
-      "apartment" : sessionStorage.getItem("apartment")
-    },
-    "contact" : {
-      "email" : sessionStorage.getItem("email"),
-      "phones" : [ sessionStorage.getItem("phoneNumber") ]
-    }
-  };
-  var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
   
-  url = encodeURI(url);
-  console.log(url);
-  $.getJSON(url, function(data){
-    if(data.booking){
-            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">First Flight Booked. <a href="home2.html">Book another flight?</a></div>';
-          }else{
-            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking the first flight. Code: '+data.error.code+'</div>';
-          }
-  });
+  var url = url1 + url2d + url3 + url4;
+ 
 
-  if(! sessionStorage.getItem("isRound")=='false'){
-    //Book the return
-    booking["flight_id"] = sessionStorage.getItem("returningFlightNumber"); 
-    var url= 'http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=bookflight2&booking='+JSON.stringify(booking);
-    url = encodeURI(url);
-    $.getJSON(url, function(data){
-    if(data.booking){
-            document.getElementById('err').innerHTML='<div class="alert alert-success" role="alert">Second Flight Booked. <a href="home2.html">Book another flight?</a></div>';
-          }else{
-            document.getElementById('err').innerHTML='<div class="alert alert-danger" role="alert">Error booking the second flight. Code: '+data.error.code+'</div>';
-          }
-    });
+       $.getJSON(url,function(data){
 
-  }
-}
+          //for testing
+          alert(data.booking);
+        })
+
+       if( url2a != ""){
+
+          var url = url1 + url2a + url3 + url4;
+ 
+
+       $.getJSON(url,function(data){
+
+          //for testing
+          alert(data.booking);
+        })
+
+       }
+
+ }
 
 function getPassengersInfo(passType, number){
 
@@ -99,11 +62,16 @@ function getPassengersInfo(passType, number){
 
         var name =  sessionStorage.getItem("name"+passenger);
         var identification;
+        var id="";
 
-          if(sessionStorage.getItem("isDni"+passenger)=="true")
-            identification = "D.N.I.: "
-          else
-            identification = "Passport: "
+          if(sessionStorage.getItem("isDni"+passenger)=="true"){
+            identification = "D.N.I.: ";
+            id="1";
+          }
+          else{
+            identification = "Passport: ";
+            id="2";
+          }
 
         var idNumber =  sessionStorage.getItem("passengerId"+passenger); 
         identification += idNumber;
@@ -122,6 +90,18 @@ function getPassengersInfo(passType, number){
                         "</div>" 
 
         $("#passengerInfo").append(info);
+
+        var n = name.split(' ');
+
+
+        url3 +=  "%7b"+
+                  "%22first_name%22:%22"+ n[0]+
+                  "%22,%22last_name%22:%22" + n[1]+
+                  "%22,%22birthdate%22:%22" + birthDate +
+                  "%22,%22id_type%22:"+ id +
+                  ",%22id_number%22:%22"+ idNumber +
+                  "%22"+
+                 "%7d,"
  
 
   }
@@ -154,7 +134,7 @@ function getPaymentsAndContactInfo(){
   var expirationDate = sessionStorage.getItem("expirationDate");
   var paymentName = sessionStorage.getItem("paymentName");
   var installments =  sessionStorage.getItem("installments");
-
+  var securityCode =  sessionStorage.getItem("securityCode");
 
   var paymentInfo = "<div class=\"col-md-3\">" +
                       "<h4>Name: "+ paymentName +"</h4>" +
@@ -173,7 +153,41 @@ function getPaymentsAndContactInfo(){
                       
                       "</div>"
 
-   $("#paymentInfo").append(paymentInfo);               
+   $("#paymentInfo").append(paymentInfo);  
+
+   var exp = expirationDate.substr(0, 4);
+   var n = paymentName.split(' ');
+  
+
+   var cityId = sessionStorage.getItem("cityId");
+   var state =  sessionStorage.getItem("state");
+   var st = state.replace(/ /g, "%20");
+   var countryId = sessionStorage.getItem("countryId");
+   var zipCode = sessionStorage.getItem("zipCode");
+   var address = sessionStorage.getItem("address");
+   var ad = address.replace(/ /g, "%20");
+   var floor = sessionStorage.getItem("floor");
+   var apartment = sessionStorage.getItem("apartment");
+
+   url4 += "%22payment%22:%7b%22installments%22:1"+
+            ",%22credit_card%22:%7b%22number%22:%22" + cardNumber +
+            "%22,%22expiration%22:%22" + exp +
+            "%22,%22security_code%22:%22" + securityCode +
+            "%22,%22first_name%22:%22" + n[0] +
+            "%22,%22last_name%22:%22" + n[1] + "%22%7d," +
+            "%22billing_address%22:%7b%22city%22:%7b%22id%22:%22" + cityId +
+            "%22,%22state%22:%22" + st +
+            "%22,%22country%22:%7b%22id%22:%22" + countryId +
+            "%22%7d%7d,%22zip_code%22:" + zipCode +
+            ",%22street%22:%22" + ad +
+            "%22,%22floor%22:"+ floor +"%22" +
+            "%22,%22apartment%22:"+ apartment +"%22" +
+            "%22%7d%7d,%22contact%22:%7b%22email%22:%22" + email +
+            "%22,%22phones%22:%5b%22" + phoneNumber + "%22%5d%7d%7d"
+
+
+
+     
 
 
 }
@@ -193,7 +207,7 @@ function getFlightsInfo() {
   var arrAirportInfo = sessionStorage.getItem("departureArrAirportInfo");
   var totalPrice = sessionStorage.getItem("departureTotalPrice");
   var prices = sessionStorage.getItem("departurePrices");
-
+  url2d = flightNumber;
 
   var flightInfo = "<div class=\"col-md-3\">"+
                     "<h4>airline: "+ airline +"</h4>"+
@@ -234,7 +248,7 @@ if( sessionStorage.getItem("isRound") == "true"){
       var arrAirportInfo = sessionStorage.getItem("returningArrAirportInfo");
       var totalPrice = sessionStorage.getItem("returningTotalPrice");
       var prices = sessionStorage.getItem("returningPrices");
-
+      url2a = flightNumber;
 
 
   var flightInfo = "<article id=\"SecondFlightData\">" +
