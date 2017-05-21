@@ -44,3 +44,13 @@ label{
 	width: 80%;
 	height: auto;
 }
+#load{
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
+	padding-right: 1em;
+}
+
+#loading{
+	text-align: center;
+}
