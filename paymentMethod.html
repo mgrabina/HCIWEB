@@ -5,17 +5,17 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/paymentMethod.css">
 		<link rel="stylesheet" type="text/css" href="css/general.css">
-		
+
 		<script type="text/javascript" src="js/jquery-3.2.0.js"></script>
 				<script type="text/javascript" src="jqui/jquery-ui.js"></script>
-		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script> 
-		<script type="text/javascript" src="js/paymentMethod.js"></script> 
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/paymentMethod.js"></script>
 	</head>
 	<body >
     	      		<!-- HEADER -->
 			<div class="row" id="header">
 				<div class="col-md-2">
-							<img id="logo" src="img/logo.png">	
+							<img id="logo" src="img/logo.png">
 				</div>
 				<div class="col-md-2">
 					<h3><a href="index.html" id="button" class="link">Home</a></h3>
@@ -29,17 +29,17 @@
 				<div class="col-md-2">
 					<h3><a href="contactus.html" id="button" class="link">Contact us</a></h3>
 				</div>
-				<div class="col-md-2">			
+				<div class="col-md-2">
 				</div>
 			</div>
-		
+
 		<div class="row">
-			<div class="col-md-1">				
+			<div class="col-md-1">
 		</div>
 		<div class="col-md-10">
 			<!-- PROGRESS BAR -->
-				<div class="col-md-12">	
-					
+				<div class="col-md-12">
+
 						<div class="progress">
 						  <div class="progress-bar progress-bar-striped pbChooseFlight" role="progressbar" style="width:33%">
 						    <a href="flightsList.html" id="chooseAFlightLink" class="linkbar">Choose a flight</a>
@@ -47,12 +47,12 @@
 						  <div class="progress-bar progress-bar-striped pbPaymentMethod" role="progressbar" style="width:33%">
 						    <a href="paymentMethod.html" id="paymentMethodLink" class="linkbar">Information</a>
 						  </div>
-						  
+
 						</div>
 				</div>
-			
-			
-			
+
+
+
 		<form >
 			<div class="passengerInfo row">
 			<div class="col-md-1"></div>
@@ -68,17 +68,17 @@
 					</tr></thead>
 
 
-			
 
-					
+
+
 				</table>
 			</div>
 			<div class="col-md-1"></div>
 			</div>
 			<div class="paymentMethod">
 				<h3>Payment Method</h3>
-				
-					<div class="col-md-1"></div>						
+
+					<div class="col-md-1"></div>
 					<div class="col-md-5">
 						<div class="form-group">
 							<label for="cardNumber">Card number</label>
@@ -88,77 +88,77 @@
 						    <label for="name">Name and Surname</label>
 						    <input type="text" placeholder="Name" class="form-control" id="paymentName"  required>
 						</div>
-						
 
-						
+
+
 					</div>
-					<div class="col-md-5">	
+					<div class="col-md-5">
 						<div class="form-group">
 							<label for="expDate">Expiration date</label>
 							<input type="month" class="form-control" id="expirationDate"  required>
-						</div>	    
+						</div>
 						<div class="form-group">
 							<label for="birthdate">Security code</label>
 							<input type="number" placeholder="xxx" min="0" max="9999" class="form-control" id="securityCode" required>
 						</div>
-						
-						
-						
-					</div>	
-					<div class="col-md-1"></div>					
-				
+
+
+
+					</div>
+					<div class="col-md-1"></div>
+
 			</div>
 
 
 
 			<div class="billingInformation">
 				<h3>Billing information</h3>
-				
-					<div class="col-md-1"></div>						
+
+					<div class="col-md-1"></div>
 					<div class="col-md-5">
 						<div class="form-group">
 							<label for="cardNumber">Country</label>
-							<input type="text" class="form-control" id="country">
+							<input maxlength="80" type="text" class="form-control" id="country">
 						</div>
 						<div class="form-group">
 						    <label for="name">City</label>
-						    <input type="text" class="form-control" id="city">
+						    <input type="text" maxlength="80" class="form-control" id="city">
 						</div>
 						<div class="form-group">
 							<label for="adress">State</label>
-							<input type="text" class="form-control" id="state" >
+							<input type="text" maxlength="80" class="form-control" id="state" >
 						</div>
-				
 
-						
+
+
 					</div>
-					<div class="col-md-5">	
+					<div class="col-md-5">
 						<div class="form-group">
 							<label for="zipCode">Zip Code</label>
-							<input  type="text" class="form-control" id="zipCode" >
-						</div>	    
+							<input  type="text" maxlength="10" class="form-control" id="zipCode" >
+						</div>
 						<div class="form-group">
 							<label for="address">Address</label>
-							<input type="text" placeholder="myAddress 1234" name="address" class="form-control" id="address" >
+							<input type="text" placeholder="myAddress 1234" maxlength="80" name="address" class="form-control" id="address" >
 						</div>
 
-						<div class="col-md-6"> 
+						<div class="col-md-6">
 						<div class="form-group">
 							<label for="floor">Floor (Optional)</label>
-							<input type="text" class="form-control" id="floor">
+							<input type="text" maxlength="3" class="form-control" id="floor">
 						</div>
 						</div>
-						<div class="col-md-6"> 
+						<div class="col-md-6">
 						<div class="form-group">
 							<label for="apartment">Apartment (Optional)</label>
-							<input type="text" class="form-control" id="apartment" >
+							<input type="text" maxlength="2" class="form-control" id="apartment" >
 						</div>
 						</div>
-						
-						
-					</div>	
-					<div class="col-md-1"></div>					
-				
+
+
+					</div>
+					<div class="col-md-1"></div>
+
 			</div>
 
 
@@ -167,29 +167,29 @@
 
 			<div class="contact">
 				<h3>Contact</h3>
-				
-					<div class="col-md-1"></div>						
+
+					<div class="col-md-1"></div>
 					<div class="col-md-5">
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input type="text" class="form-control" id="email" placeholder="myemail@email.com">
+							<input type="text" maxlength="128" class="form-control" id="email" placeholder="myemail@email.com">
 						</div>
-						
-				
 
-						
+
+
+
 					</div>
-					<div class="col-md-5">	
+					<div class="col-md-5">
 						<div class="form-group">
 							<label for="expDate">Phone Number</label>
-							<input type="number" class="form-control" id="phoneNumber">
-						</div>	    
-						
-						
-						
-					</div>	
-					<div class="col-md-1"></div>					
-				
+							<input type="number" class="form-control" max="9999999999999999999999999" id="phoneNumber">
+						</div>
+
+
+
+					</div>
+					<div class="col-md-1"></div>
+
 			</div>
 
 
@@ -205,11 +205,11 @@
 			</div>
 		</form>
 		</div>
-		<div class="col-md-1">					
+		<div class="col-md-1">
 		</div>
-		
+
 		<footer>
 			<h3>Best Flight 2017</h3>
-		</footer>	
+		</footer>
 	</body>
 </html>
