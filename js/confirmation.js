@@ -202,7 +202,7 @@ function getPaymentsAndContactInfo(){
 
 
 
-   url4 += "%22payment%22:%7b%22installments%22:1"+
+   url4 += "%22payment%22:%7b%22installments%22:"+installments+
             ",%22credit_card%22:%7b%22number%22:%22" + cardNumber +
             "%22,%22expiration%22:%22" + exp +
             "%22,%22security_code%22:%22" + securityCode +
