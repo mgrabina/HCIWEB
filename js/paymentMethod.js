@@ -5,7 +5,7 @@ $('#continueButton').click(validate);
 setPassengersInfo("adult", adults);
 setPassengersInfo("child", children);
 setPassengersInfo("infant", infants);
-
+$('#cuotas').click(loadcuotas);
 
 loadCitiesAndCountries();
 
@@ -34,7 +34,7 @@ function setPassengersInfo(passType, number){
 
       var info = "<tr>" +
             "<th scope=\"row\">"+ passType +" "+ i +"</th>" +
-             "<td><input maxlength="160" id=\"name"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"name\" placeholder=\"Name\" required autofocus></td>" +
+             "<td><input maxlength='80' id=\"name"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"name\" placeholder=\"Name\" required autofocus></td>" +
             "<td><input id=\"birthDate"+ passenger +"\" class=\"form-control\" type=\"date\" name=\"birthDate\" required></td>" +
             "<td>" +
 
@@ -49,7 +49,7 @@ function setPassengersInfo(passType, number){
             "</div>"+
 
             "</td>" +
-            "<td><input id=\"passengerId"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"identification\" placeholder=\"Number\" required></td>" +
+            "<td><input maxlength='80' id=\"passengerId"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"identification\" placeholder=\"Number\" required></td>" +
 
             "</tr>"
 
@@ -279,7 +279,7 @@ function saveInfo(){
   sessionStorage.setItem("expirationDate", expirationDate);
   sessionStorage.setItem("paymentName", paymentName);
   sessionStorage.setItem("securityCode", securityCode);
-
+  sessionStorage.setItem("installments", $("#cuotas").val());
 
 
 
@@ -381,3 +381,44 @@ $.getJSON("http://hci.it.itba.edu.ar/v1/api/geo.groovy?method=getcountries", fun
 
 
 }
+var depcuotas=[];
+var arrcuotas=[];
+var card;
+var depflight=sessionStorage.getItem("departureFlightId");
+var round=sessionStorage.getItem("isRound");
+var retflight=sessionStorage.getItem("returningId");
+function loadcuotas(){
+    card=document.getElementById("cardNumber").value;
+    $.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getinstallments&flight_id="+depflight+"&adults="+adults+"&children="+children+"&infants="+infants+"&number="+card+"",function(data){
+         try{
+          var cuotas=data.installments;
+          var cant=cuotas.length;
+        for(var x=0;x<cant;x++){
+          if ( $("#cuotas option[value='"+cuotas[x].quantity+"']").length == 0 )
+            $("select").append("<option value="+cuotas[x].quantity+">"+cuotas[x].quantity+"</option>");
+        }
+        }catch(e){}
+    });
+    if(round==true){
+      $.getJSON("http://hci.it.itba.edu.ar/v1/api/booking.groovy?method=getinstallments&flight_id="+retflight+"&adults="+adults+"&children="+children+"&infants="+infants+"&number="+card+"",function(data){
+          try{
+          var cuotas=data.installments;
+          var cant=cuotas.length;
+        for(var x=0;x<cant;x++){
+          if ( $("#cuotas option[value='"+cuotas[x].quantity+"']").length == 0 )
+            $("select option[value='"+cuotas[x].quantity+"']").remove();
+        }
+        }catch(e){}
+    });
+  
+}}
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 
 
-   sessionStorage.setItem("installments", "1");
+
 
   getPassengersInfo("adult", adults);
   getPassengersInfo("child", children);
