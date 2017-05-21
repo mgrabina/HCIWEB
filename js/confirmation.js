@@ -34,9 +34,11 @@ function book(){
           
 
           if(url2a==""){
-            if(data.booking)
+            if(data.booking){
+                  document.getElementById("btn").remove();
                   document.getElementById('err').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="index.html">Book another?</a></div>';
-            else
+                  
+            }else
                   document.getElementById('err').innerHTML+='<div class="alert alert-danger" role="alert">Error booking.</div>';
           }
 
