@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Best Flight</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/featured.css">
+		<link rel="stylesheet" type="text/css" href="css/general.css">
+		<link rel="stylesheet" type="text/css" href="css/loading.css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/featured.js"></script>
+   		<script type="text/javascript" src="js/map.js"></script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN0GliQPKiaR8tuBGtfBEbTenm8Lqw4xY&callback=initMap">
+    </script>
+    </head>
+	<body >
+    	      		<!-- HEADER -->
+			<div class="row" id="header">
+				<div class="col-md-2">
+							<img id="logo" src="img/logo.png"/>	
+				</div>
+				<div class="col-md-2">
+					<h3><a href="index.html" id="button" class="link">Home</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="featured.html" id="button" class="actual">Featured</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="status.html" id="button" class="link">Status</a></h3>
+				</div>
+				<div class="col-md-2">
+					<h3><a href="contactus.html" id="button" class="link">Contact us</a></h3>
+				</div>
+				<div class="col-md-2">			
+				</div>
+			</div>
+		
+		<div id="map"></div>
+		<section id="feturedBody">
+			<div class="row">
+				<div class="col-md-5"></div>
+				<div class="col-md-2 ">
+					<h1> Deals </h1>
+
+					<label>From: </label><select autofocus class="form-control"> 
+					</select>
+				</div>
+				<div class="col-md-5"></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6" id="contenedorTabla">
+					<table class="table table-hover">
+						<!-- Table -->
+						
+					</table>
+					<div id="loading"></div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</section>
+
+		<br>
+		<footer>
+			<h3>Best Flight 2017</h3>
+		</footer>
+		<script type="text/javascript" src="js/map.js"></script>			
+	</body>
+</html>
