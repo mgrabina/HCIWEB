@@ -49,7 +49,7 @@ function setPassengersInfo(passType, number){
             "</div>"+
 
             "</td>" +
-            "<td><input maxlength='80' id=\"passengerId"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"identification\" placeholder=\"Number\" required></td>" +
+            "<td><input maxlength='8' id=\"passengerId"+ passenger +"\" class=\"form-control\" type=\"text\" name=\"identification\" placeholder=\"Number\" required></td>" +
 
             "</tr>"
 
@@ -194,6 +194,25 @@ var exp_dateM=exp_date.toString().substring(5,7);
 if(yearnow>exp_dateY){
   errores+="Invalid expiration card date"+"<br/>";
 }
+var idcity="";
+var idCountry="";
+for(var x=0; x< availableCountries.length;x++){
+    if(availableCountries[x]==country)
+      idCountry=availableCountriesId[x];
+}
+if(idCountry==""){
+  errores+="Invalid country<br/>";
+}else{
+  for(var x=0; x< availableCities.length;x++){
+      if(availableCities[x]==city)
+        if(availableCitiesIdcountry[x]==idCountry)
+          idcity=availableCitiesId[x];
+  }
+}
+if(!($.isNumeric(zip)))
+  errores+="Only numbers in zipcode<br/>";
+if(idcity=="")
+  errores+="Invalid city<br/>";
 
 if(yearnow==exp_dateY && monthnow>exp_dateM)
   errores+="Invalid expiration card date"+"<br/>";
@@ -331,7 +350,7 @@ var availableCities = [];
 var availableCitiesId = [];
 var availableCountries = [];
 var availableCountriesId = [];
-
+var availableCitiesIdcountry=[];
 
 
 function loadCitiesAndCountries(){
@@ -344,6 +363,7 @@ function loadCitiesAndCountries(){
       for( var i = 0; i<size; i++){
         availableCities.push(data.cities[i].name);
         availableCitiesId.push(data.cities[i].id);
+        availableCitiesIdcountry.push(data.cities[i].country.id);
       }
 
 
