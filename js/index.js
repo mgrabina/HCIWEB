@@ -3,6 +3,8 @@ var availableCities = [];
 var availableCitiesid=[];
 $(document).ready(function(){
    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+	
+  sessionStorage.clear();	
 var i = 0;
 $('#noJavascript').remove();
 var totalc;
