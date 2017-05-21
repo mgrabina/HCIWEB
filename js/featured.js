@@ -5,6 +5,8 @@ var date;
 var pic = [];
 var com=[];
 $(document).ready(function(){
+	
+	sessionStorage.clear();
 
 	$( "#loading" ).empty();
 	$("#loading").append("<h4><span class=\"label label-info\" id=\"load\"><span class=\"glyphicon glyphicon-hourglass ld ld-spin\" aria-hidden=\"true\"></span> Loading...</span></h4>");  
