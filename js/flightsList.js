@@ -352,7 +352,7 @@ $.getJSON(url,function(data){
       var durationInt = parseInt(duration.substring(0,2));
 
 
-      var pricePerAdult = "price per adult: " + data.flights[i].price.adults.base_fare +", ";
+      var pricePerAdult = "Price per adult: " + data.flights[i].price.adults.base_fare +", ";
 
       var pricePerChild;
       var pricePerInfant;
@@ -362,13 +362,13 @@ $.getJSON(url,function(data){
       if(data.flights[i].price.children == null)
         pricePerChild = "";
       else
-        pricePerChild = "price per child: " + data.flights[i].price.children.base_fare +", ";
+        pricePerChild = "Price per child: " + data.flights[i].price.children.base_fare +", ";
 
     
      if(data.flights[i].price.infants == null)
         pricePerInfant = "";
       else
-        pricePerInfant = "price per infant: " + data.flights[i].price.infants.base_fare +", ";
+        pricePerInfant = "Price per infant: " + data.flights[i].price.infants.base_fare +", ";
 
 
       var charges = data.flights[i].price.total.charges;
@@ -615,12 +615,18 @@ function checkCities(){
 
       var cities = JSON.parse(localStorage.getItem("cities")).cities;
       var size = cities.length ;
+      var data2 = JSON.parse(localStorage.getItem("airport"));
 
       var i = 0;
       for( i = 0; i<size; i++){
         availableCities.push(cities[i].name);
         availableCitiesid.push(cities[i].id);
       }
+      size = data2.total;
+      for(var x=0;x<size;x++){
+        availableCities.push(data2.airports[x].description);
+        availableCitiesid.push(data2.airports[x].city.id);
+       }  
       var from2;
       var to2;
       for(var x=0;x<availableCitiesid.length;x++){
@@ -732,16 +738,18 @@ function validate(){
   var dateTo = Date.parse(document.getElementById("dateTo").value);
   var time= new Date();
   if(from=="" || to==""|| isNaN(dateFrom)){
-   errores= errores+'Complete los campos'+ "\n";
+    errores= errores+'Please complete all the fields.'+ "<br/>";
     ret=false;
   }else
   if(roundTrip==true && isNaN(dateTo)){
-    errores= errores+'Complete los campos'+ "\n";
+    errores= errores+'Please complete the returning date.'+ "<br/>"
     ret=false;
   }
   if(ret!=false){
-    if(from==to)
-      errores=errores +'Misma ciudad\n';
+    if(from==to){
+      errores=errores +'Same city.<br/>';
+      ret=false;
+    }
     
     var long = availableCities.length;
     var flag= false;
@@ -753,24 +761,24 @@ function validate(){
         flag2=true;
     }
     if(flag2==false || flag== false){
-      errores=errores +'No es una ciudad \n';
+         errores=errores +'Is not a city. <br/>';
       ret=false;
     }
     
     if(roundTrip){      
       if(dateFrom<=time || dateTo<=time || dateTo<=dateFrom){
-        errores=errores +'Dia invalido \n';
+        errores=errores +'Invalid date. <br/>';
         ret=false;
       }
     }else{
         if(dateFrom<=time){
-          errores=errores +'Dia invalido \n';
+          errores=errores +'Invalid date. <br/>';
           ret=false;
         }  
       }
 
     if(dateFrom==dateTo){
-      errores=errores +'Misma fecha \n';
+      errores=errores +'Same date. <br/>';
       ret=false;
      }
 
@@ -781,6 +789,16 @@ function validate(){
       ret=false;
     }
    }
+   for(var x=0; x< availableCities.length;x++){
+    if(availableCities[x]==from)
+      idfrom=availableCitiesid[x];
+    if(availableCities[x]==to)
+      idto=availableCitiesid[x];
+  }
+  if(errores==""&& idfrom==idto){
+    errores+='Same city.<br/>';
+    ret=false;
+  } 
   if(ret==false){
     document.getElementById('errores').innerHTML+='<div class="alert alert-danger" role="alert">'+errores+'</div>';
     document.getElementById("searchButton").href="#";
