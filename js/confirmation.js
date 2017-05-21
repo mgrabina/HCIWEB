@@ -35,7 +35,7 @@ function book(){
 
           if(url2a==""){
             if(data.booking)
-                  document.getElementById('err').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="home2.html">Book another?</a></div>';
+                  document.getElementById('err').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="index.html">Book another?</a></div>';
             else
                   document.getElementById('err').innerHTML+='<div class="alert alert-danger" role="alert">Error booking.</div>';
           }
@@ -53,7 +53,7 @@ function book(){
        $.getJSON(url,function(data){
 
            if(data.booking)
-                  document.getElementById('err').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="home2.html">Book another?</a></div>';
+                  document.getElementById('err').innerHTML+='<div class="alert alert-success" role="alert">Booking confirmed. <a href="index.html">Book another?</a></div>';
             else
                   document.getElementById('err').innerHTML+='<div class="alert alert-danger" role="alert">Error booking.</div>';
         })
