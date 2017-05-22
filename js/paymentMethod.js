@@ -76,21 +76,24 @@ function validate(){
   for(i=1;i<=adults && errores=="";i++){
   name=document.getElementById("nameadult"+i+"").value;
   idp=document.getElementById("passengerIdadult"+i+"").value;
-  if(name==""||idp=="")
+  age=document.getElementById("birthDateadult"+i+"").value;
+  if(name==""||idp==""||age=="")
     errores+="Please complete all the fields."+"<br/>";
   }
 
   for(i=1;i<=children && errores=="";i++){
   name=document.getElementById("namechild"+i+"").value;
   idp=document.getElementById("passengerIdchild"+i+"").value;
-  if(name==""||idp=="")
+  age=document.getElementById("birthDatechild"+i+"").value;
+  if(name==""||idp==""||age=="")
     errores+="Please complete all the fields."+"<br/>";
   }
 
   for(i=1;i<=infants && errores=="";i++){
   name=document.getElementById("nameinfant"+i+"").value;
   idp=document.getElementById("passengerIdinfant"+i+"").value;
-  if(name==""||idp=="")
+  age=document.getElementById("birthDateinfant"+i+"").value;
+  if(name==""||idp==""||age=="")
     errores+="Please complete all the fields."+"<br/>";
   }
 
