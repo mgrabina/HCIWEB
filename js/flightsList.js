@@ -358,7 +358,7 @@ $.getJSON(url,function(data){
      
 
 
-        var depOrArr = (getQueryV("departure")==false)?"departure":"returning";
+        var depOrArr = (getQueryV("departure")==false)?"Departure":"Returning";
    
       var durationInt = parseInt(duration.substring(0,2));
 
@@ -411,7 +411,7 @@ $.getJSON(url,function(data){
                     "<h4>Duration:</h4>" +
                   "</div>" +  
                   "<div class=\"col-md-2\">" +
-                    "<h4>flight number:</h4>" +
+                    "<h4>Flight number:</h4>" +
                   "</div>" +
                   "<div class=\"col-md-2 dark\" id=\"rightBorderTop\">" +
                     "<h4>"+ totalPrice +" USD</h4>" +
