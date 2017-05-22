@@ -348,8 +348,8 @@ $.getJSON(url,function(data){
       var depDate = data.flights[i].outbound_routes[0].segments[0].departure.date.substring(8, 10)+ "/" +data.flights[i].outbound_routes[0].segments[0].departure.date.substring(5, 7)+"/"+ data.flights[i].outbound_routes[0].segments[0].departure.date.substring(0, 4) ;
       var arrDate = data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(8, 10)+ "/" +data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(5, 7)
 
-      var depTime = data.flights[i].outbound_routes[0].segments[0].departure.date.substring(12, 16);
-      var arrTime = data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(12, 16);
+      var depTime = data.flights[i].outbound_routes[0].segments[0].departure.date.substring(11, 16);
+      var arrTime = data.flights[i].outbound_routes[0].segments[0].arrival.date.substring(11, 16);
 
 
       var ded = depDate.substring(0,2);
