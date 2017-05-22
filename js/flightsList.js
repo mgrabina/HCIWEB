@@ -458,7 +458,7 @@ $.getJSON(url,function(data){
                       "</div>" + 
                   "</div>" +
                   "<div class=\"col-md-2 dark\" id=\"rightBorderBottom\">" +
-                    "<button type=\"button\" class=\"btn btn-grey btnContinue\" flightId=\""+ flightId +"\" prices=\""+ prices +"\"  flightN=\""+ flightNumber +"\" airline=\""+ airline +"\" arrTime=\""+ arrTime +"\" depTime=\""+ depTime +"\" depDate=\""+ depDate +"\"  arrDate=\""+ arrDate +"\" totalPrice=\""+ totalPrice +"\" depAirportInfo=\""+ depAirportInfo +"\" arrAirportInfo=\""+ arrAirportInfo +"\">continue</button>" +
+                    "<button type=\"button\" class=\"btn btn-grey btnContinue\" flightId=\""+ flightId +"\" prices=\""+ prices +"\"  flightN=\""+ flightNumber +"\" airline=\""+ airline +"\" arrTime=\""+ arrTime +"\" depTime=\""+ depTime +"\" depDate=\""+ depDate +"\"  arrDate=\""+ arrDate +"\" totalPrice=\""+ totalPrice +"\" depAirportInfo=\""+ depAirportInfo +"\" arrAirportInfo=\""+ arrAirportInfo +"\">Continue</button>" +
                   "</div>" +
                 "</div>" +
               "</div>"
